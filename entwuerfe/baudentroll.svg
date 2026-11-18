@@ -1,0 +1,145 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 820" width="600" height="820">
+  <title>Der kleine Baudentroll – Entwurf</title>
+  <defs>
+    <pattern id="karo" width="16" height="16" patternUnits="userSpaceOnUse">
+      <rect width="16" height="16" fill="#f4ede0"/>
+      <rect width="8" height="16" fill="#c0392b" opacity=".55"/>
+      <rect width="16" height="8" fill="#c0392b" opacity=".55"/>
+    </pattern>
+    <radialGradient id="papier" cx="50%" cy="45%" r="70%">
+      <stop offset="0" stop-color="#fbf5e8"/><stop offset="1" stop-color="#eadcc0"/>
+    </radialGradient>
+    <radialGradient id="kopf" cx="45%" cy="38%" r="65%">
+      <stop offset="0" stop-color="#c9ad86"/><stop offset="1" stop-color="#a88a64"/>
+    </radialGradient>
+    <radialGradient id="licht" cx="50%" cy="50%" r="50%">
+      <stop offset="0" stop-color="#ffd76e" stop-opacity=".9"/><stop offset="1" stop-color="#ffd76e" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="jeans" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#4f6f99"/><stop offset="1" stop-color="#3d5a80"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="600" height="820" fill="url(#papier)"/>
+  <g fill="#c8d3df">
+    <circle cx="60" cy="90" r="5"/><circle cx="530" cy="70" r="6"/><circle cx="110" cy="230" r="4"/>
+    <circle cx="500" cy="210" r="4"/><circle cx="70" cy="420" r="5"/><circle cx="545" cy="470" r="5"/>
+    <circle cx="150" cy="40" r="3"/><circle cx="440" cy="40" r="4"/>
+  </g>
+
+  <!-- Schnee und Schatten -->
+  <ellipse cx="300" cy="745" rx="230" ry="34" fill="#ffffff" opacity=".9"/>
+  <ellipse cx="300" cy="742" rx="120" ry="14" fill="#8a7a66" opacity=".25"/>
+
+  <!-- Laterne (Licht hinten) -->
+  <circle cx="176" cy="660" r="70" fill="url(#licht)"/>
+
+  <!-- Füße, barfuß und behaart -->
+  <g stroke="#5c4330" stroke-width="3" stroke-linecap="round">
+    <ellipse cx="252" cy="724" rx="50" ry="22" fill="#b0916a"/>
+    <ellipse cx="348" cy="724" rx="50" ry="22" fill="#b0916a"/>
+  </g>
+  <g fill="#c4a67f" stroke="#5c4330" stroke-width="2.5">
+    <circle cx="210" cy="732" r="9"/><circle cx="226" cy="738" r="8"/><circle cx="242" cy="741" r="7"/>
+    <circle cx="390" cy="732" r="9"/><circle cx="374" cy="738" r="8"/><circle cx="358" cy="741" r="7"/>
+  </g>
+  <g stroke="#6b4f35" stroke-width="3" stroke-linecap="round" fill="none">
+    <path d="M232 706 l-6 -10 M246 704 l0 -12 M260 705 l6 -10 M274 708 l8 -8"/>
+    <path d="M326 708 l-8 -8 M340 705 l-6 -10 M354 704 l0 -12 M368 706 l6 -10"/>
+  </g>
+
+  <!-- Latzhose: Beine -->
+  <path d="M214 585 H386 L382 700 H306 L300 640 L294 700 H218 Z" fill="url(#jeans)" stroke="#2c4060" stroke-width="3" stroke-linejoin="round"/>
+  <rect x="216" y="684" width="80" height="18" rx="5" fill="#6d8bb3" stroke="#2c4060" stroke-width="3"/>
+  <rect x="304" y="684" width="80" height="18" rx="5" fill="#6d8bb3" stroke="#2c4060" stroke-width="3"/>
+  <!-- Flicken am Knie -->
+  <rect x="325" y="630" width="34" height="30" rx="4" fill="#a3683f" stroke="#5c4330" stroke-width="2.5" transform="rotate(-6 342 645)"/>
+  <path d="M327 636 l4 3 M327 652 l4 3 M352 628 l3 4 M354 655 l3 4" stroke="#f4ede0" stroke-width="2" stroke-linecap="round" transform="rotate(-6 342 645)"/>
+
+  <!-- Hemd: Oberkörper -->
+  <path d="M228 452 Q300 440 372 452 L392 600 H208 Z" fill="url(#karo)" stroke="#7a2a20" stroke-width="3" stroke-linejoin="round"/>
+
+  <!-- linker Arm (hängt, hält Laterne) -->
+  <g transform="translate(228 468) rotate(22)">
+    <rect x="-27" y="0" width="54" height="112" rx="27" fill="url(#karo)" stroke="#7a2a20" stroke-width="3"/>
+    <rect x="-29" y="94" width="58" height="16" rx="8" fill="#f4ede0" stroke="#7a2a20" stroke-width="2.5"/>
+  </g>
+  <!-- Laterne -->
+  <path d="M182 604 L176 628" stroke="#3b3b3b" stroke-width="4" fill="none"/>
+  <path d="M164 632 Q176 618 188 632" stroke="#3b3b3b" stroke-width="4" fill="none"/>
+  <rect x="158" y="632" width="36" height="12" rx="3" fill="#3b3b3b"/>
+  <rect x="161" y="644" width="30" height="40" rx="4" fill="#ffd76e" stroke="#3b3b3b" stroke-width="4"/>
+  <path d="M176 652 q6 10 0 18 q-6 -8 0 -18" fill="#f39c12"/>
+  <rect x="156" y="684" width="40" height="9" rx="3" fill="#3b3b3b"/>
+  <!-- linke Hand, pelzig -->
+  <circle cx="186" cy="594" r="25" fill="#b0916a" stroke="#5c4330" stroke-width="3"/>
+  <path d="M168 582 l-8 -6 M166 596 l-10 0 M172 608 l-7 7" stroke="#6b4f35" stroke-width="3" stroke-linecap="round"/>
+
+  <!-- rechter Arm (winkt) -->
+  <g transform="translate(378 470) rotate(-125)">
+    <rect x="-27" y="0" width="54" height="125" rx="27" fill="url(#karo)" stroke="#7a2a20" stroke-width="3"/>
+    <rect x="-29" y="107" width="58" height="16" rx="8" fill="#f4ede0" stroke="#7a2a20" stroke-width="2.5"/>
+  </g>
+  <!-- rechte Hand, winkend -->
+  <g stroke="#5c4330" stroke-width="3" fill="#b0916a" transform="translate(486 392)">
+    <ellipse cx="-8" cy="-34" rx="10" ry="20" transform="rotate(-15 -8 -34)"/>
+    <ellipse cx="12" cy="-33" rx="10" ry="20" transform="rotate(12 12 -33)"/>
+    <ellipse cx="29" cy="-18" rx="9" ry="18" transform="rotate(48 29 -18)"/>
+    <ellipse cx="-28" cy="-8" rx="9" ry="16" transform="rotate(-70 -28 -8)"/>
+    <circle cx="0" cy="0" r="27"/>
+  </g>
+  <path d="M470 416 l-5 9 M486 420 l0 10 M501 414 l5 8" stroke="#6b4f35" stroke-width="3" stroke-linecap="round"/>
+
+  <!-- Latz mit Taschen und Trägern -->
+  <path d="M248 505 H352 V600 H248 Z" fill="url(#jeans)" stroke="#2c4060" stroke-width="3" stroke-linejoin="round"/>
+  <path d="M272 525 H328 V560 Q300 572 272 560 Z" fill="#577aa6" stroke="#2c4060" stroke-width="2.5"/>
+  <path d="M276 532 H324" stroke="#e8c26a" stroke-width="2" stroke-dasharray="4 4"/>
+  <path d="M250 507 L236 456" stroke="#3d5a80" stroke-width="16" stroke-linecap="round"/>
+  <path d="M350 507 L364 456" stroke="#3d5a80" stroke-width="16" stroke-linecap="round"/>
+  <circle cx="254" cy="512" r="7" fill="#e8c26a" stroke="#8a6d2f" stroke-width="2"/>
+  <circle cx="346" cy="512" r="7" fill="#e8c26a" stroke="#8a6d2f" stroke-width="2"/>
+
+  <!-- Ohren -->
+  <g stroke="#5c4330" stroke-width="3">
+    <ellipse cx="160" cy="318" rx="48" ry="28" transform="rotate(-18 160 318)" fill="#b0916a"/>
+    <ellipse cx="168" cy="318" rx="28" ry="14" transform="rotate(-18 168 318)" fill="#d9a79a" stroke="none"/>
+    <ellipse cx="440" cy="318" rx="48" ry="28" transform="rotate(18 440 318)" fill="#b0916a"/>
+    <ellipse cx="432" cy="318" rx="28" ry="14" transform="rotate(18 432 318)" fill="#d9a79a" stroke="none"/>
+  </g>
+  <path d="M116 302 l-12 -8 M118 320 l-14 0 M444 278 M484 302 l12 -8 M482 320 l14 0" stroke="#6b4f35" stroke-width="3" stroke-linecap="round"/>
+
+  <!-- großer Kopf -->
+  <ellipse cx="300" cy="330" rx="150" ry="136" fill="url(#kopf)" stroke="#5c4330" stroke-width="3.5"/>
+  <!-- Haarschopf -->
+  <path d="M190 250 Q205 190 250 205 Q262 160 300 188 Q330 150 352 200 Q395 188 410 248
+           Q380 222 350 230 Q330 205 300 222 Q270 205 252 230 Q222 220 190 250 Z"
+        fill="#6b4f35" stroke="#4a3524" stroke-width="3" stroke-linejoin="round"/>
+  <path d="M300 190 Q292 150 312 128 Q306 160 318 180" fill="#6b4f35" stroke="#4a3524" stroke-width="3"/>
+  <!-- Augenbrauen -->
+  <path d="M215 278 Q248 258 280 276" stroke="#4a3524" stroke-width="10" stroke-linecap="round" fill="none"/>
+  <path d="M320 276 Q352 258 385 278" stroke="#4a3524" stroke-width="10" stroke-linecap="round" fill="none"/>
+  <!-- Augen -->
+  <g stroke="#3a2a1c" stroke-width="3">
+    <ellipse cx="250" cy="318" rx="30" ry="34" fill="#fffdf8"/>
+    <ellipse cx="350" cy="318" rx="30" ry="34" fill="#fffdf8"/>
+  </g>
+  <circle cx="256" cy="326" r="17" fill="#6b8e4e"/><circle cx="344" cy="326" r="17" fill="#6b8e4e"/>
+  <circle cx="257" cy="327" r="9" fill="#1f1a14"/><circle cx="343" cy="327" r="9" fill="#1f1a14"/>
+  <circle cx="262" cy="320" r="5" fill="#fff"/><circle cx="348" cy="320" r="5" fill="#fff"/>
+  <!-- Bäckchen und Sommersprossen -->
+  <circle cx="212" cy="384" r="24" fill="#e0837a" opacity=".45"/>
+  <circle cx="388" cy="384" r="24" fill="#e0837a" opacity=".45"/>
+  <g fill="#8a6a4a"><circle cx="205" cy="372" r="2.5"/><circle cx="218" cy="366" r="2.5"/><circle cx="214" cy="380" r="2.5"/>
+    <circle cx="395" cy="372" r="2.5"/><circle cx="382" cy="366" r="2.5"/><circle cx="386" cy="380" r="2.5"/></g>
+  <!-- Knollennase -->
+  <ellipse cx="300" cy="372" rx="36" ry="28" fill="#b88f6a" stroke="#5c4330" stroke-width="3"/>
+  <ellipse cx="290" cy="362" rx="10" ry="7" fill="#e3c9a6" opacity=".8"/>
+  <!-- Lächeln mit Zahnlücke -->
+  <path d="M248 412 Q300 458 352 412" stroke="#3a2a1c" stroke-width="4" fill="#7a3b2e" stroke-linejoin="round"/>
+  <path d="M262 420 Q300 440 338 420 L338 418 Q300 432 262 418 Z" fill="#fff"/>
+  <rect x="304" y="420" width="12" height="13" rx="2" fill="#fffdf8" stroke="#3a2a1c" stroke-width="2"/>
+  <!-- Kinnhaare -->
+  <path d="M286 462 l-2 10 M300 465 l0 11 M314 462 l2 10" stroke="#6b4f35" stroke-width="3" stroke-linecap="round"/>
+
+  <text x="300" y="800" text-anchor="middle" font-family="Georgia, serif" font-size="30" fill="#5a3e2b">Der kleine Baudentroll</text>
+</svg>
