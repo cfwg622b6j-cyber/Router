@@ -35,20 +35,26 @@ def kapitel_audio(stimme, kap, cfg_text, cfg_vers, nur_anfang=False):
         bloecke = [" ".join(erster[:4])] + [b for b in bloecke if isinstance(b, dict)]
     for b in bloecke:
         if isinstance(b, str):
-            teile += [sprich(stimme, b, cfg_text), stille(0.8, rate)]
+            teile += [sprich(stimme, b, cfg_text), stille(1.1, rate)]
         else:
             teile.append(stille(0.4, rate))
             for zeile in b["vers"]:
-                teile += [sprich(stimme, zeile, cfg_vers), stille(0.35, rate)]
+                teile += [sprich(stimme, zeile, cfg_vers), stille(0.5, rate)]
             teile.append(stille(0.8, rate))
     return b"".join(teile), rate
 
-def als_mp3(pcm, rate, ziel):
+# „Opa am Kamin“: etwas tiefer, Höhen weicher, mehr Wärme unten, ein Hauch Stube
+WAERME = ("rubberband=pitch=0.9:formant=preserved,"
+          "bass=g=3:f=160,treble=g=-4:f=5000,lowpass=f=9000,"
+          "aecho=0.85:0.5:28|47:0.10|0.06,"
+          "acompressor=threshold=-20dB:ratio=2:attack=20:release=250,")
+
+def als_mp3(pcm, rate, ziel, waerme=False):
     with tempfile.NamedTemporaryFile(suffix=".wav") as tmp:
         with wave.open(tmp.name, "wb") as wf:
             wf.setnchannels(1); wf.setsampwidth(2); wf.setframerate(rate); wf.writeframes(pcm)
         subprocess.run(["ffmpeg", "-loglevel", "error", "-y", "-i", tmp.name,
-                        "-af", "loudnorm=I=-18:TP=-1.5", "-ar", "44100",
+                        "-af", (WAERME if waerme else "") + "loudnorm=I=-18:TP=-1.5", "-ar", "44100",
                         "-codec:a", "libmp3lame", "-b:a", "64k", "-ac", "1", str(ziel)], check=True)
 
 if __name__ == "__main__":
@@ -58,15 +64,19 @@ if __name__ == "__main__":
     ap.add_argument("--probe", action="store_true")
     ap.add_argument("--ziel", default=str(ROOT / "audio"))
     ap.add_argument("--tempo", type=float, default=1.12, help="größer = langsamer")
+    ap.add_argument("--sprecher", help="z. B. sleepy oder neutral (nur bei Stimmen mit mehreren Sprechern)")
+    ap.add_argument("--waerme", action="store_true", help="tiefer, weicher, etwas Raumklang")
+    ap.add_argument("--name", help="Dateiname der Hörprobe")
     a = ap.parse_args()
 
     stimme = PiperVoice.load(a.stimme)
-    cfg_text = SynthesisConfig(length_scale=a.tempo, noise_scale=0.6, noise_w_scale=0.8)
-    cfg_vers = SynthesisConfig(length_scale=a.tempo * 1.08, noise_scale=0.6, noise_w_scale=0.8)
+    sid = stimme.config.speaker_id_map.get(a.sprecher) if a.sprecher else None
+    cfg_text = SynthesisConfig(speaker_id=sid, length_scale=a.tempo, noise_scale=0.6, noise_w_scale=0.8)
+    cfg_vers = SynthesisConfig(speaker_id=sid, length_scale=a.tempo * 1.08, noise_scale=0.6, noise_w_scale=0.8)
     alle = lade_geschichte()
     ziel = pathlib.Path(a.ziel); ziel.mkdir(parents=True, exist_ok=True)
     for nr in a.kapitel or range(1, 25):
         pcm, rate = kapitel_audio(stimme, alle[nr - 1], cfg_text, cfg_vers, a.probe)
-        name = ziel / (f"probe-{pathlib.Path(a.stimme).stem}.mp3" if a.probe else f"kapitel-{nr:02d}.mp3")
-        als_mp3(pcm, rate, name)
+        name = ziel / ((a.name or f"probe-{pathlib.Path(a.stimme).stem}") + ".mp3" if a.probe else f"kapitel-{nr:02d}.mp3")
+        als_mp3(pcm, rate, name, a.waerme)
         print(name, f"{len(pcm) / 2 / rate / 60:.1f} min")
