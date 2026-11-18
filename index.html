@@ -3,33 +3,47 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Adventskalender</title>
+  <title>Zeit der Wunder – Adventskalender der Prinzenbaude Sohland</title>
+  <meta name="description" content="Der „Lies mich!“-Adventskalender der Prinz-Friedrich-August-Baude in Sohland an der Spree: jeden Tag ein Kapitel der Geschichte „Zeit der Wunder“ von Daniela Tetzlaff.">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <canvas id="schnee" aria-hidden="true"></canvas>
+  <main class="seite">
+    <header class="kopf">
+      <p class="kicker">Prinz-Friedrich-August-Baude · Sohland an der Spree</p>
+      <h1>Zeit der Wunder</h1>
+      <p class="unterzeile">Der „Lies mich!“-Adventskalender</p>
+    </header>
 
-  <header>
-    <h1 id="titel"></h1>
-    <p class="untertitel" id="untertitel"></p>
-    <p id="status" aria-live="polite"></p>
-  </header>
+    <figure class="kalenderbild">
+      <img src="bilder/kalender.jpg" width="1168" height="668"
+           alt="Das Kalendermotiv: die Prinz-Friedrich-August-Baude mit Turm im Winter, davor Pferdeschlitten, Gäste und der alte Brunnen.">
+    </figure>
 
-  <main>
-    <div id="bild" class="bild" role="group" aria-label="Kalenderbild mit 24 Türchen">
-      <img id="basis" class="basis" alt="">
-    </div>
+    <section class="pergament begruessung">
+      <h2>Herzlich willkommen!</h2>
+      <p>Schön, dass du den exklusiven „Lies mich!“-Adventskalender der Prinzenbaude Sohland in den Händen hältst und ausprobierst, was es damit auf sich hat!</p>
+      <p>Ab 1. Dezember wird jedes geöffnete Fensterchen ein Stück des Adventskalendermotivs verändern – und dich täglich aufs Neue überraschen. Aber damit nicht genug: Zusätzlich kannst du jeden Tag online ein Kapitel der Kurzgeschichte „Zeit der Wunder“ der Autorin Daniela Tetzlaff lesen.</p>
+      <p>„Zeit der Wunder“ erzählt eine atmosphärische Geschichte über einen längst vergangenen Winter auf der Prinzenbaude und den Troll, der dort im Brunnen der Baude lebt. Mit einem kleinen Wunder pro Tag verkürzt der Troll dir die Wartezeit bis zum Weihnachtsfest.</p>
+      <p>Dazu haben wir auf den Innenseiten der Kalendertürchen QR-Codes angebracht, die du mit deinem Smartphone oder Tablet scannen kannst. Sie führen dich jeden Tag zum richtigen Kapitel auf unserer Webseite. Probier es einfach aus!</p>
+      <p>Wir freuen uns darauf, dir die Vorweihnachtszeit mit diesem einzigartigen Adventskalender zu verschönern und wünschen dir eine gute Zeit! Bis bald einmal wieder auf der Prinzenbaude in Sohland!</p>
+      <p class="klein">Dieser Adventskalender entstand in Zusammenarbeit mit der Pappnoptikum GmbH aus Leipzig.</p>
+    </section>
+
+    <section class="kapitelwahl" aria-labelledby="kapitel-ueberschrift">
+      <h2 id="kapitel-ueberschrift">Die 24 Kapitel</h2>
+      <p id="hinweis" class="hinweis"></p>
+      <ol id="kapitelliste" class="kapitelliste"></ol>
+    </section>
   </main>
-
-  <footer>
-    <button id="nur-bild" type="button" aria-pressed="false">Nur das Bild ansehen</button>
-    <button id="zuruecksetzen" type="button">Türchen wieder schließen</button>
+  <footer class="fuss">
+    <a href="impressum.html">Impressum</a> · <a href="datenschutz.html">Datenschutz</a>
   </footer>
 
-  <script src="daten.js"></script>
   <script src="geschichte.js"></script>
   <script src="gemeinsam.js"></script>
-  <script src="app.js"></script>
+  <script src="start.js"></script>
   <script src="schnee.js"></script>
 </body>
 </html>

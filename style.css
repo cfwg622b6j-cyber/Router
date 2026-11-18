@@ -1,129 +1,101 @@
 :root {
-  --bg: #0e1a2b;
-  --bg2: #1d3150;
-  --rot: #b23a48;
-  --gold: #f2c14e;
-  --text: #fdf6ec;
+  --nacht: #141c2b;
+  --nacht2: #2a3a55;
+  --abend: #e9a35b;
+  --gold: #f0c674;
+  --text: #fbf4e6;
   --papier: #fbf5e9;
   --tinte: #2e2620;
+  --rot: #9b2f36;
+  --gruen: #2f4a35;
 }
 * { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; background: var(--nacht); }
 body {
   margin: 0;
   min-height: 100vh;
-  font-family: Georgia, "Times New Roman", serif;
+  display: flex; flex-direction: column;
+  font-family: Georgia, "Iowan Old Style", "Palatino Linotype", serif;
   color: var(--text);
-  background: radial-gradient(ellipse at top, var(--bg2), var(--bg) 70%) fixed;
+  background: var(--nacht) linear-gradient(180deg, var(--nacht2), var(--nacht)) top / 100% 900px no-repeat;
 }
 #schnee { position: fixed; inset: 0; pointer-events: none; z-index: 0; }
-header, main, footer { position: relative; z-index: 1; }
-header { text-align: center; padding: 1.5rem 16px .5rem; }
-h1 { margin: 0; font-size: clamp(1.4rem, 4vw, 2.4rem); color: var(--gold); text-shadow: 0 2px 8px #0008; }
-.untertitel { margin: .2rem 0 0; letter-spacing: .15em; text-transform: uppercase; font-size: .85rem; opacity: .8; }
-#status { margin: .6rem 0 0; min-height: 1.4em; }
-main { padding: 0 16px; }
+.seite, .fuss { position: relative; z-index: 1; }
+.seite { width: 100%; max-width: 1000px; margin: 0 auto; padding: 1.5rem 16px 2rem; flex: 1; }
+.seite.schmal { max-width: 720px; }
 
-/* ---------- Kalenderbild ---------- */
-.bild {
-  position: relative;
-  max-width: 1200px;
-  margin: 1rem auto;
-  container-type: inline-size;
-  border-radius: 10px;
-  overflow: hidden;
-  box-shadow: 0 10px 40px #000a, 0 0 0 6px #3a2a20, 0 0 0 8px var(--gold);
-}
-.basis { display: block; width: 100%; height: 100%; }
-.slot { position: absolute; perspective: 900px; }
-.slot.offen, .slot:has(.blatt:focus-visible) { z-index: 2; }
-.dahinter {
-  position: absolute; inset: 0;
-  background: var(--nachher) var(--bp) / var(--bs) no-repeat;
-  box-shadow: inset 0 0 10px #000c;
-}
-.blatt {
-  position: absolute; inset: 0;
-  padding: 0; border: 0; background: none; cursor: pointer;
-  transform-origin: left center;
-  transform-style: preserve-3d;
-  transition: transform .9s cubic-bezier(.3,.7,.3,1);
-}
-.vorne, .hinten { position: absolute; inset: 0; backface-visibility: hidden; }
-.vorne {
-  background: var(--vorher) var(--bp) / var(--bs) no-repeat;
-  outline: 1.5px dashed #ffffffa0; outline-offset: -2px;
-  display: grid; place-items: center;
-}
-.hinten { background: var(--papier); transform: rotateY(180deg); box-shadow: inset 0 0 8px #0004; }
-.zahl {
-  font-size: 4.2cqw; font-weight: bold; color: #fff;
-  text-shadow: 0 0 6px #000, 0 2px 3px #000;
-}
-.slot.offen .blatt { transform: rotateY(-115deg); }
-.slot.gesperrt .blatt { cursor: not-allowed; }
-.slot.heute .vorne { outline: 2px solid var(--gold); animation: leuchten 1.6s ease-in-out infinite alternate; }
-.blatt:focus-visible { outline: none; }
-.blatt:focus-visible .vorne { outline: 3px solid var(--gold); }
-.slot.wackeln { animation: wackeln .4s; }
+.kopf { text-align: center; margin-bottom: 1.2rem; }
+.kicker { margin: 0; font-size: .8rem; letter-spacing: .14em; text-transform: uppercase; color: var(--gold); }
+.kicker.dunkel { color: var(--rot); text-align: center; }
+h1 { margin: .2rem 0; font-weight: normal; font-size: clamp(2.2rem, 7vw, 3.6rem); color: var(--gold); text-shadow: 0 2px 10px #0009; }
+.unterzeile { margin: 0; font-style: italic; opacity: .85; }
 
-.kapitel-link {
-  position: absolute; left: 50%; bottom: 6%;
-  transform: translateX(-50%);
-  white-space: nowrap;
-  font-size: 1.5cqw; padding: .25em .6em; border-radius: 99px;
-  background: var(--rot); color: #fff; text-decoration: none;
-  box-shadow: 0 2px 6px #0008;
-  opacity: 0; pointer-events: none; transition: opacity .4s .6s;
-}
-.slot.offen .kapitel-link { opacity: 1; pointer-events: auto; }
-.kapitel-link:hover, .kapitel-link:focus-visible { background: var(--gold); color: var(--tinte); outline: none; }
-.slot:not(.offen) .kapitel-link { visibility: hidden; }
-
-.bild.nur-bild .slot.offen .blatt,
-.bild.nur-bild .kapitel-link { opacity: 0; pointer-events: none; transition-delay: 0s; }
-.bild.nur-bild .dahinter { box-shadow: none; }
-
-@keyframes leuchten { to { box-shadow: 0 0 16px 4px var(--gold); } }
-@keyframes wackeln { 25% { transform: translateX(-4px); } 75% { transform: translateX(4px); } }
-
-footer { text-align: center; padding: 1.5rem 16px 2.5rem; display: flex; gap: .8rem; justify-content: center; flex-wrap: wrap; }
-footer button {
-  font: inherit; background: transparent; color: var(--text);
-  border: 1px solid #fff5; border-radius: 6px; padding: .5rem 1rem; cursor: pointer;
-}
-footer button:hover { border-color: var(--gold); color: var(--gold); }
-
-@media (max-width: 600px) {
-  .zahl { font-size: 5.5cqw; }
-  .kapitel-link { font-size: 2.6cqw; }
+.kalenderbild { margin: 0 0 1.8rem; }
+.kalenderbild img {
+  display: block; width: 100%; height: auto; border-radius: 6px;
+  box-shadow: 0 12px 40px #000b, 0 0 0 1px #ffffff20;
 }
 
-/* ---------- Kapitelseite ---------- */
-.kapitelseite main { max-width: 720px; margin: 0 auto; padding: 1rem 16px 3rem; }
-.oben a { color: var(--gold); text-decoration: none; }
 .pergament {
-  margin-top: 1rem; padding: clamp(1.2rem, 5vw, 2.5rem);
   background: var(--papier); color: var(--tinte);
-  border-radius: 10px; box-shadow: 0 10px 40px #000a;
+  border-radius: 8px; padding: clamp(1.2rem, 5vw, 2.5rem);
+  box-shadow: 0 12px 40px #000a;
 }
-.vignette {
-  width: min(260px, 70%); margin: 0 auto 1.2rem;
-  border-radius: 8px; box-shadow: 0 0 0 4px #fff, 0 4px 14px #0006;
-  background-repeat: no-repeat;
+.pergament h1 { color: var(--tinte); text-shadow: none; text-align: center; font-size: clamp(1.7rem, 5.5vw, 2.4rem); }
+.pergament h2 { font-weight: normal; color: var(--rot); margin: 1.4em 0 .4em; }
+.pergament h2:first-child { margin-top: 0; }
+.pergament p, .text p { font-size: 1.1rem; line-height: 1.7; margin: 0 0 1em; }
+.pergament .klein { font-size: .95rem; opacity: .75; }
+.pergament a { color: var(--rot); }
+.begruessung h2 { text-align: center; }
+.werk { text-align: center; font-style: italic; opacity: .7; margin: 0 0 1.8rem !important; }
+
+.text .vers {
+  font-style: italic;
+  margin: 1.6em auto;
+  padding: 1em 1.2em;
+  max-width: 34em;
+  border-left: 3px solid var(--gold);
+  background: #f3e9d4;
+  border-radius: 0 6px 6px 0;
+  line-height: 1.75;
 }
-.vignette[hidden] { display: none; }
-.pergament .tag { margin: 0; text-align: center; color: var(--rot); font-weight: bold; letter-spacing: .1em; text-transform: uppercase; font-size: .85rem; }
-.pergament h1 { color: var(--tinte); text-shadow: none; text-align: center; margin: .3rem 0 .2rem; }
-.geschichte-titel { text-align: center; font-style: italic; opacity: .7; margin: 0 0 1.5rem; }
-#kapitel-inhalt p { font-size: 1.12rem; line-height: 1.7; margin: 0 0 1em; }
-.hoerbuch { margin: 0 0 1.5rem; padding: 1rem; background: #efe5d0; border-radius: 8px; text-align: center; }
+.text .vers span { display: block; padding-left: 1.2em; text-indent: -1.2em; }
+
+.kapitelwahl { margin-top: 2.2rem; text-align: center; }
+.kapitelwahl h2 { font-weight: normal; color: var(--gold); font-size: 1.8rem; margin: 0 0 .3rem; }
+.hinweis { margin: 0 0 1.2rem; opacity: .9; }
+.kapitelliste {
+  list-style: none; margin: 0; padding: 0;
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 10px;
+}
+.kapitelliste a, .kapitelliste .zu {
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: .2rem;
+  min-height: 96px; padding: .6rem;
+  border-radius: 6px; text-decoration: none;
+}
+.kapitelliste a {
+  background: var(--papier); color: var(--tinte);
+  box-shadow: 0 4px 14px #0007;
+  transition: transform .15s, box-shadow .15s;
+}
+.kapitelliste a:hover, .kapitelliste a:focus-visible { transform: translateY(-2px); box-shadow: 0 8px 20px #000a; outline: 2px solid var(--gold); }
+.kapitelliste .zu { border: 1px dashed #ffffff55; color: #ffffffaa; }
+.kapitelliste .nr { font-size: 1.8rem; line-height: 1; color: var(--rot); }
+.kapitelliste .zu .nr { color: inherit; }
+.kapitelliste .name { font-size: .9rem; }
+
+.oben { margin-bottom: 1rem; }
+.oben a { color: var(--gold); text-decoration: none; }
+.oben a:hover { text-decoration: underline; }
+
+.hoerbuch { margin: 0 0 1.6rem; padding: 1rem; background: #efe5d0; border-radius: 8px; text-align: center; }
 .hoerbuch figcaption { margin-bottom: .5rem; font-weight: bold; }
 .hoerbuch audio { width: 100%; }
-.blaettern { display: flex; justify-content: space-between; margin-top: 2rem; border-top: 1px solid #0002; padding-top: 1rem; }
+
+.blaettern { display: flex; justify-content: space-between; gap: 1rem; margin-top: 2rem; border-top: 1px solid #0002; padding-top: 1rem; }
 .blaettern a { color: var(--rot); text-decoration: none; font-weight: bold; }
 .blaettern a:not([href]) { visibility: hidden; }
 
-@media (prefers-reduced-motion: reduce) {
-  .blatt { transition: none; }
-  .slot.heute .vorne, .slot.wackeln { animation: none; }
-}
+.fuss { text-align: center; padding: 1.5rem 16px 2rem; font-size: .9rem; opacity: .8; }
+.fuss a { color: var(--text); }

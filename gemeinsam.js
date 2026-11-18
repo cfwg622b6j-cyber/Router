@@ -1,46 +1,29 @@
-// Gemeinsame Logik für Kalender und Kapitelseite.
+// Gemeinsame Logik: Wann ist welches Kapitel lesbar?
 window.ADVENT = (function () {
   "use strict";
   const params = new URLSearchParams(location.search);
   // Zum Testen: ?datum=2026-12-10 simuliert ein Datum, ?alle schaltet alles frei.
   const heute = params.has("datum") ? new Date(params.get("datum") + "T12:00:00") : new Date();
   const alleFrei = params.has("alle");
-  const jahr = heute.getMonth() === 0 ? heute.getFullYear() - 1 : heute.getFullYear();
-  const SCHLUESSEL = "adventskalender-offen-" + jahr;
+  const monat = heute.getMonth(); // 0 = Januar, 10 = November, 11 = Dezember
 
-  function istFrei(tag) {
+  // November: alles noch verschlossen. Dezember: Kapitel n ab dem n-ten.
+  // Ab 25. Dezember bis Ende Oktober: die ganze Geschichte ist lesbar.
+  function istFrei(nr) {
     if (alleFrei) return true;
-    if (heute.getFullYear() > jahr) return true;
-    return heute.getMonth() === 11 && heute.getDate() >= tag;
+    if (monat === 10) return false;
+    if (monat === 11) return heute.getDate() >= nr;
+    return true;
   }
-  function istHeute(tag) {
-    return heute.getMonth() === 11 && heute.getDate() === tag;
-  }
-  function ladeOffen() {
-    try { return new Set(JSON.parse(localStorage.getItem(SCHLUESSEL)) || []); }
-    catch { return new Set(); }
-  }
-  function speichereOffen(set) {
-    try { localStorage.setItem(SCHLUESSEL, JSON.stringify([...set])); } catch {}
-  }
-  function markiereOffen(tag) {
-    const s = ladeOffen(); s.add(tag); speichereOffen(s); return s;
-  }
+  function freiAb(nr) { return `${nr}. Dezember`; }
+
   // Testparameter an interne Links weitergeben
   function link(pfad) {
-    const p = new URLSearchParams();
-    if (params.has("datum")) p.set("datum", params.get("datum"));
-    if (alleFrei) p.set("alle", "");
-    const q = p.toString().replace(/=(&|$)/g, "$1");
-    if (!q) return pfad;
-    return pfad + (pfad.includes("?") ? "&" : "?") + q;
+    const p = [];
+    if (params.has("datum")) p.push("datum=" + encodeURIComponent(params.get("datum")));
+    if (alleFrei) p.push("alle");
+    if (!p.length) return pfad;
+    return pfad + (pfad.includes("?") ? "&" : "?") + p.join("&");
   }
-  // CSS-Werte, um genau den Bildausschnitt eines Türchens zu zeigen
-  function ausschnitt(t) {
-    return {
-      size: `${(100 / t.b) * 100}% ${(100 / t.h) * 100}%`,
-      position: `${(t.x / (100 - t.b)) * 100}% ${(t.y / (100 - t.h)) * 100}%`
-    };
-  }
-  return { heute, jahr, alleFrei, istFrei, istHeute, ladeOffen, speichereOffen, markiereOffen, link, ausschnitt };
+  return { heute, istFrei, freiAb, link };
 })();

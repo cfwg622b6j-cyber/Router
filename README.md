@@ -1,42 +1,38 @@
-# Adventskalender der Prinz-Friedrich-August-Baude
+# Zeit der Wunder – Webseite zum Adventskalender der Prinzenbaude
 
-Digitaler Adventskalender nach dem Vorbild des gedruckten Baudenkalenders:
+Webseite für den gedruckten „Lies mich!“-Adventskalender der
+Prinz-Friedrich-August-Baude in Sohland an der Spree. Die QR-Codes hinter den
+Kalendertürchen führen zu den 24 Kapiteln der Geschichte „Zeit der Wunder“
+von Daniela Tetzlaff.
 
-- **Ein Gesamtbild mit 24 Türchen.** Hinter jedem Türchen liegt ein Stück eines
-  zweiten, gezeichneten Bildes – mit jedem geöffneten Türchen verändert sich das
-  Gesamtbild ein Stück weiter.
-- **Hinter jedem Türchen ein Kapitel** der Geschichte vom kleinen Baudentroll im
-  Brunnen, zum Lesen und (optional) als Hörbuch.
-- Türchen und Kapitel lassen sich erst ab ihrem Tag im Dezember öffnen.
-- Jedes Kapitel hat eine eigene Adresse (`kapitel.html?nr=5`) – dorthin können
-  QR-Codes auf einem gedruckten Kalender zeigen.
+Statische Website, kein Build-Schritt, keine Cookies, keine externen Dienste.
 
-Statische Website ohne Build-Schritt und ohne Abhängigkeiten.
+## Seiten
 
-## Starten
+| Datei | Inhalt |
+|---|---|
+| `index.html` | Begrüßung (QR-Code auf der Kalender-Rückseite), Kalenderbild, Übersicht der 24 Kapitel |
+| `kapitel.html?nr=1` … `?nr=24` | Ein Kapitel – Ziel der QR-Codes in den Türchen |
+| `impressum.html`, `datenschutz.html` | Pflichtangaben – **Platzhalter `[…]` noch ausfüllen** |
+
+## Freischaltung
+
+- November: alle Kapitel noch verschlossen
+- Dezember: Kapitel *n* ab dem *n*-ten Dezember
+- 25. Dezember bis Ende Oktober: die ganze Geschichte ist lesbar
+
+Regel in `gemeinsam.js`. Testen: `?datum=2026-12-05` simuliert ein Datum,
+`?alle` schaltet alles frei.
+
+## Inhalte
+
+- Geschichte: `geschichte.js` (übernommen aus `Zeit_der_Wunder_Daniela_Tetzlaff_final-1.docx`;
+  kursive Zeilen im Dokument = Reime)
+- Hörbuch: MP3 nach `audio/` legen und im Kapitel `audio: "audio/kapitel-01.mp3"` eintragen
+- Kalenderbild: `bilder/kalender.jpg`
+
+## Lokal ansehen
 
 ```bash
-python3 -m http.server 8000
-# → http://localhost:8000
+python3 -m http.server 8000   # → http://localhost:8000
 ```
-
-Testen: `?datum=2026-12-14` simuliert ein Datum, `?alle` schaltet alles frei
-(z. B. `index.html?datum=2026-12-24`).
-
-## Eigene Inhalte einsetzen
-
-| Was | Wo |
-|---|---|
-| Bild vor dem Öffnen | `bilder/vorher.*` (Pfad in `daten.js`) |
-| Gezeichnetes Bild hinter den Türchen | `bilder/nachher.*` – **exakt gleich groß** wie das Vorher-Bild |
-| Bildgröße, Titel | `daten.js` |
-| Lage der 24 Türchen | `daten.js` → `tueren` (Prozent: `x`, `y` = linke obere Ecke, `b` = Breite, `h` = Höhe) |
-| Kapiteltexte, Autorin | `geschichte.js` |
-| Hörbuch | MP3s nach `audio/`, Pfad je Kapitel in `geschichte.js` (`audio: "audio/kapitel-01.mp3"`) |
-
-Das Nachher-Bild wird nur innerhalb der Türchen sichtbar. Alles, was sich
-verändern soll, muss also innerhalb der Türchenflächen liegen; außerhalb sollten
-beide Bilder identisch sein.
-
-Die Bilder in `bilder/` sind Platzhalter und werden von
-`werkzeuge/platzhalter-bilder.py` erzeugt.

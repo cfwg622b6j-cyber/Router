@@ -3,26 +3,27 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Kapitel</title>
+  <title>Zeit der Wunder</title>
   <link rel="stylesheet" href="style.css">
 </head>
-<body class="kapitelseite">
+<body>
   <canvas id="schnee" aria-hidden="true"></canvas>
-  <main>
-    <nav class="oben"><a id="zum-kalender" href="index.html">‹ Zum Kalender</a></nav>
+  <main class="seite schmal">
+    <nav class="oben"><a id="zur-start" href="index.html">‹ Alle Kapitel</a></nav>
     <article class="pergament">
-      <div id="vignette" class="vignette" aria-hidden="true"></div>
-      <p class="tag" id="kapitel-tag"></p>
+      <p class="kicker dunkel" id="kapitel-kicker"></p>
       <h1 id="kapitel-titel"></h1>
-      <p class="geschichte-titel" id="geschichte-titel"></p>
-      <div id="kapitel-inhalt"></div>
+      <p class="werk">„Zeit der Wunder“ von Daniela Tetzlaff</p>
+      <div id="kapitel-inhalt" class="text"></div>
       <nav class="blaettern">
         <a id="zurueck" rel="prev"></a>
         <a id="weiter" rel="next"></a>
       </nav>
     </article>
   </main>
-  <script src="daten.js"></script>
+  <footer class="fuss">
+    <a href="impressum.html">Impressum</a> · <a href="datenschutz.html">Datenschutz</a>
+  </footer>
   <script src="geschichte.js"></script>
   <script src="gemeinsam.js"></script>
   <script src="kapitel.js"></script>
