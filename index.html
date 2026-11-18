@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Digitaler Adventskalender</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <canvas id="schnee" aria-hidden="true"></canvas>
+
+  <header>
+    <h1>Adventskalender <span id="jahr"></span></h1>
+    <p id="status"></p>
+  </header>
+
+  <main id="kalender" aria-label="24 Türchen"></main>
+
+  <footer>
+    <button id="zuruecksetzen" type="button">Fortschritt zurücksetzen</button>
+  </footer>
+
+  <dialog id="dialog">
+    <article>
+      <p class="tag" id="dialog-tag"></p>
+      <h2 id="dialog-titel"></h2>
+      <div id="dialog-inhalt"></div>
+      <button id="dialog-schliessen" type="button">Schließen</button>
+    </article>
+  </dialog>
+
+  <script src="inhalte.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
