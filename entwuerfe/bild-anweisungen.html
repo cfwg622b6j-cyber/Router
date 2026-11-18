@@ -1,0 +1,198 @@
+<title>Baudentroll-Bilder</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Young+Serif&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&display=swap">
+<style>
+/* Layout: eine ruhige Lesespalte; oben die Anleitung, dann der Starttext, dann 24 Szenenkarten mit Kopierknopf */
+:root {
+  --grund: #eef1f4;      /* Schneelicht */
+  --blatt: #ffffff;
+  --tinte: #1f2a37;      /* Nachtblau */
+  --leise: #5b6676;
+  --karo: #b8463b;       /* Rot vom karierten Hemd */
+  --karo-text: #ffffff;
+  --moos: #4f6b4a;
+  --linie: #d6dce4;
+  --code: #f6f3ec;
+  --display: "Young Serif", Georgia, serif;
+  --text: "Atkinson Hyperlegible", system-ui, sans-serif;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --grund: #141b26; --blatt: #1c2533; --tinte: #e8ecf2; --leise: #a3adbb;
+  --karo: #e07467; --karo-text: #1a1010; --moos: #9cc196; --linie: #2e3a4b; --code: #232d3c; color-scheme: dark; } }
+:root[data-theme="dark"] {
+  --grund: #141b26; --blatt: #1c2533; --tinte: #e8ecf2; --leise: #a3adbb;
+  --karo: #e07467; --karo-text: #1a1010; --moos: #9cc196; --linie: #2e3a4b; --code: #232d3c; color-scheme: dark; }
+* { box-sizing: border-box; }
+body { background: var(--grund); color: var(--tinte); font: 17px/1.55 var(--text);
+  padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); padding-block: 28px 56px; }
+main { max-width: 720px; margin: 0 auto; display: grid; gap: 40px; }
+h1, h2, h3 { font-family: var(--display); font-weight: 400; text-wrap: balance; margin: 0; }
+h1 { font-size: clamp(2rem, 7vw, 2.8rem); line-height: 1.1; }
+h2 { font-size: 1.5rem; margin-bottom: 12px; }
+h3 { font-size: 1.15rem; line-height: 1.3; }
+p { margin: 0; }
+.schritte a { color: var(--karo); font-weight: 700; }
+.eyebrow { text-transform: uppercase; letter-spacing: .12em; font-size: .78rem; color: var(--moos); font-weight: 700; margin-bottom: 8px; }
+.intro p + p { margin-top: 10px; }
+.leise { color: var(--leise); }
+.schritte { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; counter-reset: s; }
+.schritte li { counter-increment: s; display: grid; grid-template-columns: 2.2rem 1fr; gap: 12px; align-items: start; }
+.schritte li::before { content: counter(s); font-family: var(--display); font-size: 1.2rem; width: 2.2rem; height: 2.2rem; border-radius: 50%;
+  display: grid; place-items: center; background: var(--blatt); border: 1.5px solid var(--linie); }
+.schritte li > div { min-width: 0; padding-top: 4px; }
+.prompt { background: var(--code); border: 1px solid var(--linie); border-radius: 10px; padding: 14px; display: grid; gap: 12px; }
+.prompt p { white-space: pre-wrap; font-size: .95rem; line-height: 1.5; overflow-wrap: anywhere; }
+.kopie { justify-self: start; font: 700 1rem var(--text); padding: 10px 18px; border-radius: 8px; border: 0; cursor: pointer;
+  background: var(--karo); color: var(--karo-text); min-height: 44px; }
+.kopie:focus-visible { outline: 3px solid var(--moos); outline-offset: 2px; }
+.kopie.ok { background: var(--moos); }
+.szenen { list-style: none; margin: 0; padding: 0; display: grid; gap: 18px; }
+.szene { background: var(--blatt); border: 1px solid var(--linie); border-radius: 12px; padding: 16px; display: grid; gap: 12px; }
+.szene .kopf { display: grid; grid-template-columns: auto 1fr; gap: 12px; align-items: center; }
+.szene .kopf > div { min-width: 0; }
+.nr { font-family: var(--display); font-size: 1.6rem; line-height: 1; color: var(--karo); min-width: 2ch; text-align: center; font-variant-numeric: tabular-nums; }
+.tag { font-size: .8rem; text-transform: uppercase; letter-spacing: .08em; color: var(--leise); }
+.sprung { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 12px; }
+.sprung a { display: grid; place-items: center; min-width: 40px; height: 40px; border-radius: 8px; border: 1px solid var(--linie);
+  background: var(--blatt); color: var(--tinte); text-decoration: none; font-variant-numeric: tabular-nums; }
+.sprung a:focus-visible { outline: 3px solid var(--moos); }
+.korrektur { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; }
+@media (prefers-reduced-motion: no-preference) { .kopie { transition: background .2s; } }
+</style>
+
+<main>
+  <header class="intro">
+    <p class="eyebrow">Zeit der Wunder · Prinz-Friedrich-August-Baude</p>
+    <h1>Bilder für den kleinen Baudentroll</h1>
+    <p style="margin-top:12px">Fertige Texte für ChatGPT – zu jedem der 24 Kapitel eine Szene. Tippe auf <strong>Kopieren</strong> und füge den Text in ChatGPT ein.</p>
+  </header>
+
+  <section>
+    <h2>So geht’s</h2>
+    <ol class="schritte">
+      <li><div>ChatGPT öffnen und einen <strong>neuen Chat</strong> beginnen. Alle Bilder in <em>diesem einen</em> Chat machen, dann bleibt der Troll gleich.</div></li>
+      <li><div>Zwei Bilder hochladen (Büroklammer oder Plus-Zeichen): <strong>die Trollzeichnung</strong> und <strong>das Foto vom Kalender</strong>. Beide hat Claude dir im Chat geschickt.</div></li>
+      <li><div>Den <strong>Starttext</strong> unten kopieren, einfügen und abschicken.</div></li>
+      <li><div>Danach eine Szene nach der anderen kopieren und abschicken. Gefällt ein Bild nicht, hilft ein Satz aus <a href="#korrekturen">Nachbessern</a>.</div></li>
+    </ol>
+  </section>
+
+  <section>
+    <p class="eyebrow">Zuerst einmal</p>
+    <h2>Starttext</h2>
+    <div class="prompt"><p id="start">Ich möchte mit dir Bilder für ein Kinderbuch zur Weihnachtsgeschichte „Zeit der Wunder“ malen. Bitte merke dir für alle folgenden Bilder:
+
+STIL: sanfte, warme Kinderbuch-Illustration im Aquarell-Stil mit weichen Buntstift-Konturen. Gedeckte Winterfarben, gemütliches Kerzen- und Laternenlicht, nostalgisch und liebevoll. Keine harten Linien, kein Fotorealismus, keine Schrift im Bild. Hochformat 3:4.
+
+ZEIT: um 1900 – Pferdeschlitten, Kutschen, Laternen, Kleidung der Jahrhundertwende. Keine Autos und nichts Modernes.
+
+ORT: die Prinz-Friedrich-August-Baude in Sohland an der Spree (Oberlausitz), siehe das hochgeladene Kalenderbild: ein langgestreckter Berggasthof mit weißem Erdgeschoss und dunkelgrünem, holzverkleidetem Obergeschoss mit kleinen Gauben, daneben ein schlanker hellgelber Aussichtsturm mit rotem Band unter dem Dach. Vor dem Haus ein alter, runder Brunnen aus moosigen Feldsteinen. Ringsum Fichten und kahle Laubbäume.
+
+DER KLEINE BAUDENTROLL, siehe meine hochgeladene Zeichnung: ein kleiner, freundlicher Troll, etwa so groß wie ein vierjähriges Kind. Sehr großer runder Kopf, große grüne Augen, Knollennase, rosige Bäckchen, abstehende Ohren, struppiger brauner Haarschopf mit einer Locke obendrauf, ein einzelner Zahn beim Lächeln. Arme, Hände und Füße pelzig behaart, er läuft barfuß. Er trägt eine blaue Latzhose mit Flicken am Knie und ein kleines rot-weiß kariertes Hemd. Er wohnt in einer gemütlichen Höhle tief unter dem Brunnen und erfüllt heimlich Wünsche. Er muss auf allen Bildern genau gleich aussehen.
+
+Bitte bestätige kurz und warte dann auf meine erste Szene.</p><button type="button" class="kopie" data-ziel="start">Kopieren</button></div>
+  </section>
+
+  <section>
+    <p class="eyebrow">Danach</p>
+    <h2>Die 24 Szenen</h2>
+    <p class="leise">In fast jedem Bild versteckt sich der Troll irgendwo – ein kleines Suchspiel für Kinder.</p>
+    <nav class="sprung" aria-label="Zu Kapitel springen"><a href="#kapitel-1">1</a><a href="#kapitel-2">2</a><a href="#kapitel-3">3</a><a href="#kapitel-4">4</a><a href="#kapitel-5">5</a><a href="#kapitel-6">6</a><a href="#kapitel-7">7</a><a href="#kapitel-8">8</a><a href="#kapitel-9">9</a><a href="#kapitel-10">10</a><a href="#kapitel-11">11</a><a href="#kapitel-12">12</a><a href="#kapitel-13">13</a><a href="#kapitel-14">14</a><a href="#kapitel-15">15</a><a href="#kapitel-16">16</a><a href="#kapitel-17">17</a><a href="#kapitel-18">18</a><a href="#kapitel-19">19</a><a href="#kapitel-20">20</a><a href="#kapitel-21">21</a><a href="#kapitel-22">22</a><a href="#kapitel-23">23</a><a href="#kapitel-24">24</a></nav>
+  </section>
+  <ol class="szenen">
+    <li class="szene" id="kapitel-1">
+  <div class="kopf"><span class="nr">1</span><div><p class="tag">Erster Dezember</p><h3>Der Wirt wünscht sich Schnee</h3></div></div>
+  <div class="prompt"><p id="s1">Szene zu Kapitel 1, „Erster Dezember“: Abenddämmerung, stürmischer grauer Himmel, noch kein Schnee, alles matschig. Der Baudenwirt Martin, ein Mann um die 50 mit Schnauzbart, Jacke und Hut, steht mit einem Bein in einer tiefen Pfütze am alten Brunnen und hängt fluchend einen verbeulten Metalleimer wieder ein. Darunter im Querschnitt: die warme, gemütliche Höhle unter dem Brunnen, in der der kleine Troll mit gespitzten Ohren lauscht. Am Himmel tanzen die allerersten Schneeflocken. Gleicher Stil, gleiche Baude und genau derselbe kleine Troll wie besprochen. Hochformat, keine Schrift im Bild.</p><button type="button" class="kopie" data-ziel="s1">Kopieren</button></div>
+</li><li class="szene" id="kapitel-2">
+  <div class="kopf"><span class="nr">2</span><div><p class="tag">Zweiter Dezember</p><h3>Der einsame Archivar findet einen Kater</h3></div></div>
+  <div class="prompt"><p id="s2">Szene zu Kapitel 2, „Zweiter Dezember“: Rote Abendsonne, der gelbe Turm der Baude glüht, verschneite Wanderwege. Der junge Archivar Herr Jakkel – schmal, mit Brille, langem Mantel und Schal – kniet allein am Weg und streckt die Hand nach einem mageren, herrenlosen Kater aus, der ihn anmaunzt. Aus dem Brunnen im Hintergrund lugt der kleine Troll und lächelt. Gleicher Stil, gleiche Baude und genau derselbe kleine Troll wie besprochen. Hochformat, keine Schrift im Bild.</p><button type="button" class="kopie" data-ziel="s2">Kopieren</button></div>
+</li><li class="szene" id="kapitel-3">
+  <div class="kopf"><span class="nr">3</span><div><p class="tag">Dritter Dezember</p><h3>Der Koffer der feinen Dame</h3></div></div>
+  <div class="prompt"><p id="s3">Szene zu Kapitel 3, „Dritter Dezember“: Vor der Baude steht die prächtige Schlittenkutsche der Frau von Liebherr, einer eleganten Dame mit Pelz und viel Schmuck. Der Diener Jakob steht auf einer Leiter am Kutschendach; ein Koffer ist ihm aus den klammen Fingern gerutscht, fliegt im Bogen, springt auf, und feine Kleider fallen in den Schneematsch. Hinter dem Brunnen schaut der kleine Troll neugierig hervor. Gleicher Stil, gleiche Baude und genau derselbe kleine Troll wie besprochen. Hochformat, keine Schrift im Bild.</p><button type="button" class="kopie" data-ziel="s3">Kopieren</button></div>
+</li><li class="szene" id="kapitel-4">
+  <div class="kopf"><span class="nr">4</span><div><p class="tag">Vierter Dezember</p><h3>Die Kerze im Turmfenster</h3></div></div>
+  <div class="prompt"><p id="s4">Szene zu Kapitel 4, „Vierter Dezember“: Nacht, tiefer Neuschnee im dunklen Wald. Ein frierender Vater stapft durch den Wald und entdeckt zwischen den Bäumen ein warmes Licht: eine Kerze im obersten Fenster des gelben Turms der Baude. Am Turmfenster ist ganz klein der Umriss des Trolls zu sehen. Unten am Brunnen hält eine Mutter ihren weinenden kleinen Sohn Gerd (barfuß, ohne Mantel) tröstend im Arm. Gleicher Stil, gleiche Baude und genau derselbe kleine Troll wie besprochen. Hochformat, keine Schrift im Bild.</p><button type="button" class="kopie" data-ziel="s4">Kopieren</button></div>
+</li><li class="szene" id="kapitel-5">
+  <div class="kopf"><span class="nr">5</span><div><p class="tag">Fünfter Dezember</p><h3>Doris und der freche Kater</h3></div></div>
+  <div class="prompt"><p id="s5">Szene zu Kapitel 5, „Fünfter Dezember“: Dämmerung hinter der Baude, Schnee. Doris, eine junge Frau mit kunstvoller Hochsteckfrisur und einem Sahnefleck auf dem Rock, erschrickt und lacht zugleich, weil ein frecher Kater an ihrem Rock schnuppert. Ein freundlicher junger Mann mit Brille eilt besorgt herbei. Der kleine Troll versteckt sich schmunzelnd hinter einer Fichte. Gleicher Stil, gleiche Baude und genau derselbe kleine Troll wie besprochen. Hochformat, keine Schrift im Bild.</p><button type="button" class="kopie" data-ziel="s5">Kopieren</button></div>
+</li><li class="szene" id="kapitel-6">
+  <div class="kopf"><span class="nr">6</span><div><p class="tag">Sechster Dezember</p><h3>Nikolausgaben aus dem Brunnen</h3></div></div>
+  <div class="prompt"><p id="s6">Szene zu Kapitel 6, „Sechster Dezember“: Frühe Dämmerung am alten Brunnen. Ein armer Junge in Flickenhose und seine Mutter in einem einfachen Wolltuch zucken zusammen: Aus dem Brunnen flattert eine Fledermaus, in den Krallen ein Tuchbündel mit Äpfeln, Nüssen und einem Lebkuchen in Trollform. Der Junge strahlt. Tief im Brunnen blitzen die grünen Augen des Trolls. Gleicher Stil, gleiche Baude und genau derselbe kleine Troll wie besprochen. Hochformat, keine Schrift im Bild.</p><button type="button" class="kopie" data-ziel="s6">Kopieren</button></div>
+</li><li class="szene" id="kapitel-7">
+  <div class="kopf"><span class="nr">7</span><div><p class="tag">Siebter Dezember</p><h3>Judith rodelt mit</h3></div></div>
+  <div class="prompt"><p id="s7">Szene zu Kapitel 7, „Siebter Dezember“: Sonniger Wintertag am Rodelhang bei der Baude. Eine Hochzeitsgesellschaft in festlicher Kleidung hält ein Band über die Piste. Das Brautpaar und das Mädchen Judith in einem Rollstuhl mit Holzkufen sausen jubelnd den Hang hinunter, Judith lacht aus vollem Herzen. Ihre Eltern haben Freudentränen in den Augen. Am Rand winkt der kleine Troll versteckt hinter einem Schneehaufen. Gleicher Stil, gleiche Baude und genau derselbe kleine Troll wie besprochen. Hochformat, keine Schrift im Bild.</p><button type="button" class="kopie" data-ziel="s7">Kopieren</button></div>
+</li><li class="szene" id="kapitel-8">
+  <div class="kopf"><span class="nr">8</span><div><p class="tag">Achter Dezember</p><h3>Die Handschuhe des Lampenanzünders</h3></div></div>
+  <div class="prompt"><p id="s8">Szene zu Kapitel 8, „Achter Dezember“: Stürmische Schneenacht, wirbelnde Flocken. Ein Lampenanzünder steht an seiner Leiter unter einer Wegelaterne und hält staunend ein Paar warme, gestrickte Fäustlinge in den Händen. An die Leiter gelehnt steht ein neues, glänzendes Anzündrohr. Im Schneegestöber huscht der kleine Troll davon, nur halb zu sehen. Gleicher Stil, gleiche Baude und genau derselbe kleine Troll wie besprochen. Hochformat, keine Schrift im Bild.</p><button type="button" class="kopie" data-ziel="s8">Kopieren</button></div>
+</li><li class="szene" id="kapitel-9">
+  <div class="kopf"><span class="nr">9</span><div><p class="tag">Neunter Dezember</p><h3>Die verlorene Taschenuhr</h3></div></div>
+  <div class="prompt"><p id="s9">Szene zu Kapitel 9, „Neunter Dezember“: Rote Abenddämmerung über verschneiten Bergen. Eine junge Witwe im dunklen Mantel sitzt traurig auf der Brunnenmauer. Daneben, in einem kahlen Baum, verhandelt der kleine Troll mit einer Krähe, die eine glänzende goldene Taschenuhr im Schnabel hält. Gleicher Stil, gleiche Baude und genau derselbe kleine Troll wie besprochen. Hochformat, keine Schrift im Bild.</p><button type="button" class="kopie" data-ziel="s9">Kopieren</button></div>
+</li><li class="szene" id="kapitel-10">
+  <div class="kopf"><span class="nr">10</span><div><p class="tag">Zehnter Dezember</p><h3>Die Kisten am Personaleingang</h3></div></div>
+  <div class="prompt"><p id="s10">Szene zu Kapitel 10, „Zehnter Dezember“: Schneebedeckter Hof am Personaleingang der Baude. Die Magd Astrid sinkt vor Staunen in den Schnee: Vor ihr stehen große Holzkisten voller Lebensmittel – Schinken, Speck, Bohnen, Brot, ein Rebhuhn –, sorgfältig mit Tüchern abgedeckt. In der Tür steht die rundliche Köchin mit Schürze. Hinter den Kisten lugt der kleine Troll hervor. Gleicher Stil, gleiche Baude und genau derselbe kleine Troll wie besprochen. Hochformat, keine Schrift im Bild.</p><button type="button" class="kopie" data-ziel="s10">Kopieren</button></div>
+</li><li class="szene" id="kapitel-11">
+  <div class="kopf"><span class="nr">11</span><div><p class="tag">Elfter Dezember</p><h3>Die neue Arzttasche</h3></div></div>
+  <div class="prompt"><p id="s11">Szene zu Kapitel 11, „Elfter Dezember“: Gemütliches Gästezimmer der Baude am Abend, Kerzenlicht. Doktor Burkhard, ein junger Arzt, steht verdutzt vor seinem Bett: Statt seiner alten, abgewetzten Ledertasche steht dort eine funkelnagelneue, daneben ein kleiner Zettel. Am Fenster verschwindet gerade eine pelzige kleine Trollhand nach draußen. Gleicher Stil, gleiche Baude und genau derselbe kleine Troll wie besprochen. Hochformat, keine Schrift im Bild.</p><button type="button" class="kopie" data-ziel="s11">Kopieren</button></div>
+</li><li class="szene" id="kapitel-12">
+  <div class="kopf"><span class="nr">12</span><div><p class="tag">Zwölfter Dezember</p><h3>Das neue Gespann</h3></div></div>
+  <div class="prompt"><p id="s12">Szene zu Kapitel 12, „Zwölfter Dezember“: Vor dem Eingang der Baude steht ein treuer brauner Ackergaul mit einem nagelneuen Gespann, daran hängt eine große, frisch geschlagene Tanne. Ein bärtiger Holzfäller mit Axt auf der Schulter staunt mit offenem Mund. Hinter dem Pferd schaut der kleine Troll mit einem Schmiedehammer hervor und grinst. Gleicher Stil, gleiche Baude und genau derselbe kleine Troll wie besprochen. Hochformat, keine Schrift im Bild.</p><button type="button" class="kopie" data-ziel="s12">Kopieren</button></div>
+</li><li class="szene" id="kapitel-13">
+  <div class="kopf"><span class="nr">13</span><div><p class="tag">Dreizehnter Dezember</p><h3>Der gläserne Stern</h3></div></div>
+  <div class="prompt"><p id="s13">Szene zu Kapitel 13, „Dreizehnter Dezember“: Mondhelle Nacht. Die neunjährige Luisa steht im Nachthemd am Fenster ihres Zimmers in der Baude. Auf dem Fensterbrett liegt ein schimmernder Stern aus Glas, der im Mondlicht leuchtet. Draußen steht der große Tannenbaum mit selbstgebasteltem Schmuck aus Kastanien, Nüssen und Stroh. Auf einem Ast sitzt ganz klein der Troll. Gleicher Stil, gleiche Baude und genau derselbe kleine Troll wie besprochen. Hochformat, keine Schrift im Bild.</p><button type="button" class="kopie" data-ziel="s13">Kopieren</button></div>
+</li><li class="szene" id="kapitel-14">
+  <div class="kopf"><span class="nr">14</span><div><p class="tag">Vierzehnter Dezember</p><h3>Jette und der Aschemantel</h3></div></div>
+  <div class="prompt"><p id="s14">Szene zu Kapitel 14, „Vierzehnter Dezember“: Früher Morgen, noch dunkel. In der Gaststube der Baude mit großem Kachelkamin steht das Zimmermädchen Jette mit Schürze und Haube erschrocken da, in der Hand den Ascheeimer. Auf dem Stuhl liegt ein eleganter Damenmantel voller grauer Asche. Aus dem Kamin lugt der kleine Troll, rußig im Gesicht. Gleicher Stil, gleiche Baude und genau derselbe kleine Troll wie besprochen. Hochformat, keine Schrift im Bild.</p><button type="button" class="kopie" data-ziel="s14">Kopieren</button></div>
+</li><li class="szene" id="kapitel-15">
+  <div class="kopf"><span class="nr">15</span><div><p class="tag">Fünfzehnter Dezember</p><h3>Der Troll rettet den Postboten</h3></div></div>
+  <div class="prompt"><p id="s15">Szene zu Kapitel 15, „Fünfzehnter Dezember“: Verschneiter Steinbruch im Tannenwald. Ein Postbote in Uniform ist in eine Felsspalte gestürzt, Briefe liegen verstreut im Schnee. Der kleine Troll tritt zum ersten Mal mutig aus dem Schatten und reicht ihm die pelzige Hand. Der Postbote staunt mit großen Augen. Gleicher Stil, gleiche Baude und genau derselbe kleine Troll wie besprochen. Hochformat, keine Schrift im Bild.</p><button type="button" class="kopie" data-ziel="s15">Kopieren</button></div>
+</li><li class="szene" id="kapitel-16">
+  <div class="kopf"><span class="nr">16</span><div><p class="tag">Sechzehnter Dezember</p><h3>Mariannes Puppe</h3></div></div>
+  <div class="prompt"><p id="s16">Szene zu Kapitel 16, „Sechzehnter Dezember“: Kinderzimmer am Morgen, warmes Licht. Die kleine Marianne sitzt glücklich im Bett und hält ein neues Stoffpüppchen im Arm; neben ihr liegen drei kleine Hemdchen und drei Röckchen. Im Hintergrund durch die offene Tür sieht man in der Gaststube die Krippe mit dem Jesuskind, in Leinen gehüllt. Unter dem Bett schaut der kleine Troll hervor. Gleicher Stil, gleiche Baude und genau derselbe kleine Troll wie besprochen. Hochformat, keine Schrift im Bild.</p><button type="button" class="kopie" data-ziel="s16">Kopieren</button></div>
+</li><li class="szene" id="kapitel-17">
+  <div class="kopf"><span class="nr">17</span><div><p class="tag">Siebzehnter Dezember</p><h3>Die Bettlerin an der Küchentür</h3></div></div>
+  <div class="prompt"><p id="s17">Szene zu Kapitel 17, „Siebzehnter Dezember“: Kalte Nacht an der Hintertür der Küche. Warmes Licht fällt aus der Tür. Die Magd Astrid reicht einer alten, frierenden Bettlerin ihren Teller mit dampfendem Eintopf und einem Stück dunklem Brot. Im Schatten neben dem Holzstapel beobachtet der kleine Troll die Szene gerührt. Gleicher Stil, gleiche Baude und genau derselbe kleine Troll wie besprochen. Hochformat, keine Schrift im Bild.</p><button type="button" class="kopie" data-ziel="s17">Kopieren</button></div>
+</li><li class="szene" id="kapitel-18">
+  <div class="kopf"><span class="nr">18</span><div><p class="tag">Achtzehnter Dezember</p><h3>Die Märchenoma</h3></div></div>
+  <div class="prompt"><p id="s18">Szene zu Kapitel 18, „Achtzehnter Dezember“: Gemütliche Gaststube am Nachmittag. Märchenoma Sieglinde, eine alte Frau mit Tuch über den Schultern, sitzt im Lehnstuhl und erzählt; neben ihr dampft eine Tasse Kräutertee, daneben ein kleines Kräutersäckchen. Viele Kinder sitzen im Kreis auf dem Boden und lauschen gebannt. Draußen am Fenster drückt sich der kleine Troll die Nase platt und hört auch zu. Gleicher Stil, gleiche Baude und genau derselbe kleine Troll wie besprochen. Hochformat, keine Schrift im Bild.</p><button type="button" class="kopie" data-ziel="s18">Kopieren</button></div>
+</li><li class="szene" id="kapitel-19">
+  <div class="kopf"><span class="nr">19</span><div><p class="tag">Neunzehnter Dezember</p><h3>Der Jäger kommt</h3></div></div>
+  <div class="prompt"><p id="s19">Szene zu Kapitel 19, „Neunzehnter Dezember“: Oben: Verschneiter Wald an der Rodelbahn. Ein Jäger im grünen Lodenmantel mit Fasanenfeder am Hut und einer Flinte sucht nach Spuren. Kinder mit Schlitten laufen durch den Wald und rufen mit den Händen am Mund. Unten im Querschnitt: der kleine Troll sitzt gemütlich in seiner Höhle unter dem Brunnen in einem Sessel, mit einer Tasse Tee und einem dicken Buch. Gleicher Stil, gleiche Baude und genau derselbe kleine Troll wie besprochen. Hochformat, keine Schrift im Bild.</p><button type="button" class="kopie" data-ziel="s19">Kopieren</button></div>
+</li><li class="szene" id="kapitel-20">
+  <div class="kopf"><span class="nr">20</span><div><p class="tag">Zwanzigster Dezember</p><h3>Die gebrochene Achse</h3></div></div>
+  <div class="prompt"><p id="s20">Szene zu Kapitel 20, „Zwanzigster Dezember“: Vor der Baude ist eine Kutsche mit gebrochener Achse eingesackt; auf ihrem Dach türmt sich ein Berg Koffer unter einem Netz. Die Fahrgäste klettern erschrocken heraus, Doktor Burkhard mit seiner neuen Arzttasche tröstet den verzweifelten Kutscher. Im Querschnitt unter dem Brunnen sitzt der kleine Troll mit verschränkten Armen und schmollt. Gleicher Stil, gleiche Baude und genau derselbe kleine Troll wie besprochen. Hochformat, keine Schrift im Bild.</p><button type="button" class="kopie" data-ziel="s20">Kopieren</button></div>
+</li><li class="szene" id="kapitel-21">
+  <div class="kopf"><span class="nr">21</span><div><p class="tag">Einundzwanzigster Dezember</p><h3>Der Gabentisch am Brunnen</h3></div></div>
+  <div class="prompt"><p id="s21">Szene zu Kapitel 21, „Einundzwanzigster Dezember“: Nebliger, trüber Abend, die Bäume tragen ein Kleid aus Raureif. Am alten Brunnen ist ein Gabentisch entstanden: eine Brosche, ein Fläschchen Hustensaft, kleine Trolle aus Kastanien, viele brennende Kerzen. Gäste und Personal stehen davor und singen. Im Hintergrund flitzt ein Marder mit einem Hahn im Maul über das Dach des Hühnerstalls. Gleicher Stil, gleiche Baude und genau derselbe kleine Troll wie besprochen. Hochformat, keine Schrift im Bild.</p><button type="button" class="kopie" data-ziel="s21">Kopieren</button></div>
+</li><li class="szene" id="kapitel-22">
+  <div class="kopf"><span class="nr">22</span><div><p class="tag">Zweiundzwanzigster Dezember</p><h3>Die Beute des Jägers</h3></div></div>
+  <div class="prompt"><p id="s22">Szene zu Kapitel 22, „Zweiundzwanzigster Dezember“: Vor der Baude: Der Jäger sitzt stolz auf seinem Pferd, das Gewehr in die Luft gereckt. Doktor Burkhard zieht das Tuch von der Beute – darunter liegt ein Wildschwein. Alle Leute lachen schallend, das Mädchen Judith im Rollstuhl zeigt lachend auf das Schwein. Hinter dem Brunnen kichert der kleine Troll mit der Hand vor dem Mund. Gleicher Stil, gleiche Baude und genau derselbe kleine Troll wie besprochen. Hochformat, keine Schrift im Bild.</p><button type="button" class="kopie" data-ziel="s22">Kopieren</button></div>
+</li><li class="szene" id="kapitel-23">
+  <div class="kopf"><span class="nr">23</span><div><p class="tag">Dreiundzwanzigster Dezember</p><h3>Kompott mit Jette</h3></div></div>
+  <div class="prompt"><p id="s23">Szene zu Kapitel 23, „Dreiundzwanzigster Dezember“: Große, dampfende Weihnachtsküche der Baude, überall Töpfe und Schüsseln für das Neunerlei. Am Herd steht das Zimmermädchen Jette mit Schürze neben dem kleinen Troll; sie zeigt ihm, wie man Zwetschgenkompott kocht. Der Troll hält eine Dessertschale mit Kompott und leckt sich den Mund. Ein zerbrochener Zuckertopf liegt auf dem Boden. Gleicher Stil, gleiche Baude und genau derselbe kleine Troll wie besprochen. Hochformat, keine Schrift im Bild.</p><button type="button" class="kopie" data-ziel="s23">Kopieren</button></div>
+</li><li class="szene" id="kapitel-24">
+  <div class="kopf"><span class="nr">24</span><div><p class="tag">Vierundzwanzigster Dezember</p><h3>Ein Brief für den Troll</h3></div></div>
+  <div class="prompt"><p id="s24">Szene zu Kapitel 24, „Vierundzwanzigster Dezember“: Heiliger Abend. Die Baude erstrahlt im Lichterglanz, frischer Schnee, Sternenhimmel. Jette und der Postbote lassen am Brunnen einen Brief in die Tiefe fallen. Unten im Querschnitt: In seiner gemütlichen Höhle liest der kleine Troll bei Kerzenschein glücklich den Brief, neben ihm ein Topf Zwetschgenkompott. Gleicher Stil, gleiche Baude und genau derselbe kleine Troll wie besprochen. Hochformat, keine Schrift im Bild.</p><button type="button" class="kopie" data-ziel="s24">Kopieren</button></div>
+</li>
+  </ol>
+
+  <section id="korrekturen">
+    <p class="eyebrow">Wenn ein Bild nicht passt</p>
+    <h2>Nachbessern</h2>
+    <ul class="korrektur"><li><div class="prompt"><p id="k1">Der Troll soll genau so aussehen wie auf meiner Zeichnung: großer runder Kopf, blaue Latzhose, rot-weiß kariertes Hemd, barfuß.</p><button type="button" class="kopie" data-ziel="k1">Kopieren</button></div></li><li><div class="prompt"><p id="k2">Bitte sanfter und weicher malen, mehr wie ein Aquarell im Bilderbuch.</p><button type="button" class="kopie" data-ziel="k2">Kopieren</button></div></li><li><div class="prompt"><p id="k3">Bitte ohne Schrift und ohne Buchstaben im Bild.</p><button type="button" class="kopie" data-ziel="k3">Kopieren</button></div></li><li><div class="prompt"><p id="k4">Die Baude soll aussehen wie auf meinem Kalenderbild: weißes Erdgeschoss, dunkelgrünes Obergeschoss, gelber Turm.</p><button type="button" class="kopie" data-ziel="k4">Kopieren</button></div></li><li><div class="prompt"><p id="k5">Gefällt mir. Bitte genau so, nur etwas mehr Schnee.</p><button type="button" class="kopie" data-ziel="k5">Kopieren</button></div></li></ul>
+  </section>
+</main>
+
+<script>
+document.addEventListener("click", async (e) => {
+  const b = e.target.closest(".kopie"); if (!b) return;
+  const el = document.getElementById(b.dataset.ziel), text = el.textContent;
+  const fertig = () => { b.textContent = "Kopiert"; b.classList.add("ok"); setTimeout(() => { b.textContent = "Kopieren"; b.classList.remove("ok"); }, 1800); };
+  try { await navigator.clipboard.writeText(text); fertig(); }
+  catch {
+    const r = document.createRange(); r.selectNodeContents(el);
+    const s = getSelection(); s.removeAllRanges(); s.addRange(r);
+    b.textContent = "Markiert – jetzt kopieren";
+  }
+});
+</script>
