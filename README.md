@@ -1,34 +1,42 @@
-# Digitaler Adventskalender
+# Adventskalender der Prinz-Friedrich-August-Baude
 
-Ein statischer Adventskalender im Browser – 24 Türchen, kein Build-Schritt, keine Abhängigkeiten.
+Digitaler Adventskalender nach dem Vorbild des gedruckten Baudenkalenders:
+
+- **Ein Gesamtbild mit 24 Türchen.** Hinter jedem Türchen liegt ein Stück eines
+  zweiten, gezeichneten Bildes – mit jedem geöffneten Türchen verändert sich das
+  Gesamtbild ein Stück weiter.
+- **Hinter jedem Türchen ein Kapitel** der Geschichte vom kleinen Baudentroll im
+  Brunnen, zum Lesen und (optional) als Hörbuch.
+- Türchen und Kapitel lassen sich erst ab ihrem Tag im Dezember öffnen.
+- Jedes Kapitel hat eine eigene Adresse (`kapitel.html?nr=5`) – dorthin können
+  QR-Codes auf einem gedruckten Kalender zeigen.
+
+Statische Website ohne Build-Schritt und ohne Abhängigkeiten.
 
 ## Starten
-
-`index.html` im Browser öffnen oder lokal einen Server starten:
 
 ```bash
 python3 -m http.server 8000
 # → http://localhost:8000
 ```
 
-## Funktionen
+Testen: `?datum=2026-12-14` simuliert ein Datum, `?alle` schaltet alles frei
+(z. B. `index.html?datum=2026-12-24`).
 
-- 24 Türchen in fester, gemischter Anordnung mit Aufklapp-Animation
-- Türchen lassen sich erst ab ihrem Tag im Dezember öffnen; das heutige leuchtet
-- Geöffnete Türchen werden im Browser gespeichert (`localStorage`)
-- Countdown bis zum 1. Dezember, Schneefall, mobiltauglich
+## Eigene Inhalte einsetzen
 
-## Inhalte anpassen
+| Was | Wo |
+|---|---|
+| Bild vor dem Öffnen | `bilder/vorher.*` (Pfad in `daten.js`) |
+| Gezeichnetes Bild hinter den Türchen | `bilder/nachher.*` – **exakt gleich groß** wie das Vorher-Bild |
+| Bildgröße, Titel | `daten.js` |
+| Lage der 24 Türchen | `daten.js` → `tueren` (Prozent: `x`, `y` = linke obere Ecke, `b` = Breite, `h` = Höhe) |
+| Kapiteltexte, Autorin | `geschichte.js` |
+| Hörbuch | MP3s nach `audio/`, Pfad je Kapitel in `geschichte.js` (`audio: "audio/kapitel-01.mp3"`) |
 
-In `inhalte.js` hat jedes Türchen einen Eintrag:
+Das Nachher-Bild wird nur innerhalb der Türchen sichtbar. Alles, was sich
+verändern soll, muss also innerhalb der Türchenflächen liegen; außerhalb sollten
+beide Bilder identisch sein.
 
-```js
-{ titel: "Nikolaus", emoji: "🎅", text: "…", bild: "bilder/6.jpg", link: { url: "https://…", text: "Mehr" } }
-```
-
-Nur `titel` ist Pflicht.
-
-## Testen
-
-- `index.html?datum=2026-12-10` – simuliert ein Datum
-- `index.html?alle` – alle Türchen freigeschaltet
+Die Bilder in `bilder/` sind Platzhalter und werden von
+`werkzeuge/platzhalter-bilder.py` erzeugt.

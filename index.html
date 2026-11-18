@@ -3,33 +3,33 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Digitaler Adventskalender</title>
+  <title>Adventskalender</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <canvas id="schnee" aria-hidden="true"></canvas>
 
   <header>
-    <h1>Adventskalender <span id="jahr"></span></h1>
-    <p id="status"></p>
+    <h1 id="titel"></h1>
+    <p class="untertitel" id="untertitel"></p>
+    <p id="status" aria-live="polite"></p>
   </header>
 
-  <main id="kalender" aria-label="24 Türchen"></main>
+  <main>
+    <div id="bild" class="bild" role="group" aria-label="Kalenderbild mit 24 Türchen">
+      <img id="basis" class="basis" alt="">
+    </div>
+  </main>
 
   <footer>
-    <button id="zuruecksetzen" type="button">Fortschritt zurücksetzen</button>
+    <button id="nur-bild" type="button" aria-pressed="false">Nur das Bild ansehen</button>
+    <button id="zuruecksetzen" type="button">Türchen wieder schließen</button>
   </footer>
 
-  <dialog id="dialog">
-    <article>
-      <p class="tag" id="dialog-tag"></p>
-      <h2 id="dialog-titel"></h2>
-      <div id="dialog-inhalt"></div>
-      <button id="dialog-schliessen" type="button">Schließen</button>
-    </article>
-  </dialog>
-
-  <script src="inhalte.js"></script>
+  <script src="daten.js"></script>
+  <script src="geschichte.js"></script>
+  <script src="gemeinsam.js"></script>
   <script src="app.js"></script>
+  <script src="schnee.js"></script>
 </body>
 </html>

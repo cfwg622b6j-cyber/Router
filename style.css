@@ -1,12 +1,11 @@
 :root {
-  --bg: #0f2a1d;
-  --bg2: #1b4332;
-  --tuer: #b23a48;
-  --tuer2: #8c1c2b;
+  --bg: #0e1a2b;
+  --bg2: #1d3150;
+  --rot: #b23a48;
   --gold: #f2c14e;
   --text: #fdf6ec;
-  --offen: #2d6a4f;
-  --gesperrt: #4a4e57;
+  --papier: #fbf5e9;
+  --tinte: #2e2620;
 }
 * { box-sizing: border-box; }
 body {
@@ -14,93 +13,117 @@ body {
   min-height: 100vh;
   font-family: Georgia, "Times New Roman", serif;
   color: var(--text);
-  background: radial-gradient(ellipse at top, var(--bg2), var(--bg) 70%);
-  background-attachment: fixed;
+  background: radial-gradient(ellipse at top, var(--bg2), var(--bg) 70%) fixed;
 }
 #schnee { position: fixed; inset: 0; pointer-events: none; z-index: 0; }
 header, main, footer { position: relative; z-index: 1; }
-header { text-align: center; padding: 2rem 1rem 1rem; }
-h1 { margin: 0; font-size: clamp(1.8rem, 5vw, 3rem); color: var(--gold); text-shadow: 0 2px 8px #0008; }
-#status { margin: .5rem 0 0; opacity: .85; }
+header { text-align: center; padding: 1.5rem 16px .5rem; }
+h1 { margin: 0; font-size: clamp(1.4rem, 4vw, 2.4rem); color: var(--gold); text-shadow: 0 2px 8px #0008; }
+.untertitel { margin: .2rem 0 0; letter-spacing: .15em; text-transform: uppercase; font-size: .85rem; opacity: .8; }
+#status { margin: .6rem 0 0; min-height: 1.4em; }
+main { padding: 0 16px; }
 
-#kalender {
-  display: grid;
-  grid-template-columns: repeat(6, 1fr);
-  gap: 14px;
-  max-width: 900px;
-  margin: 1rem auto;
-  padding: 0 16px;
-}
-.tuer {
-  aspect-ratio: 1;
-  perspective: 600px;
-  border: none;
-  padding: 0;
-  background: transparent;
-  cursor: pointer;
-  font: inherit;
-  color: inherit;
-}
-.tuer-innen {
+/* ---------- Kalenderbild ---------- */
+.bild {
   position: relative;
-  width: 100%; height: 100%;
+  max-width: 1200px;
+  margin: 1rem auto;
+  container-type: inline-size;
   border-radius: 10px;
-  background: var(--offen);
-  box-shadow: inset 0 0 0 2px #fff2;
-  display: grid; place-items: center;
-  font-size: 2.2rem;
+  overflow: hidden;
+  box-shadow: 0 10px 40px #000a, 0 0 0 6px #3a2a20, 0 0 0 8px var(--gold);
 }
-.tuer-blatt {
+.basis { display: block; width: 100%; height: 100%; }
+.slot { position: absolute; perspective: 900px; }
+.slot.offen, .slot:has(.blatt:focus-visible) { z-index: 2; }
+.dahinter {
   position: absolute; inset: 0;
-  border-radius: 10px;
-  background: linear-gradient(135deg, var(--tuer), var(--tuer2));
-  box-shadow: 0 4px 12px #0007, inset 0 0 0 2px var(--gold);
-  display: grid; place-items: center;
-  font-size: 2rem; font-weight: bold; color: var(--gold);
+  background: var(--nachher) var(--bp) / var(--bs) no-repeat;
+  box-shadow: inset 0 0 10px #000c;
+}
+.blatt {
+  position: absolute; inset: 0;
+  padding: 0; border: 0; background: none; cursor: pointer;
   transform-origin: left center;
-  transition: transform .8s cubic-bezier(.3,.7,.3,1);
-  backface-visibility: hidden;
+  transform-style: preserve-3d;
+  transition: transform .9s cubic-bezier(.3,.7,.3,1);
 }
-.tuer.offen .tuer-blatt { transform: rotateY(-105deg); }
-.tuer.gesperrt { cursor: not-allowed; }
-.tuer.gesperrt .tuer-blatt { filter: grayscale(.6) brightness(.75); }
-.tuer.heute .tuer-blatt { animation: leuchten 1.6s ease-in-out infinite alternate; }
-.tuer:focus-visible { outline: 3px solid var(--gold); outline-offset: 3px; border-radius: 10px; }
-.tuer.wackeln { animation: wackeln .4s; }
-
-@keyframes leuchten { to { box-shadow: 0 0 22px var(--gold), inset 0 0 0 2px var(--gold); } }
-@keyframes wackeln {
-  25% { transform: translateX(-5px); } 75% { transform: translateX(5px); }
+.vorne, .hinten { position: absolute; inset: 0; backface-visibility: hidden; }
+.vorne {
+  background: var(--vorher) var(--bp) / var(--bs) no-repeat;
+  outline: 1.5px dashed #ffffffa0; outline-offset: -2px;
+  display: grid; place-items: center;
 }
+.hinten { background: var(--papier); transform: rotateY(180deg); box-shadow: inset 0 0 8px #0004; }
+.zahl {
+  font-size: 4.2cqw; font-weight: bold; color: #fff;
+  text-shadow: 0 0 6px #000, 0 2px 3px #000;
+}
+.slot.offen .blatt { transform: rotateY(-115deg); }
+.slot.gesperrt .blatt { cursor: not-allowed; }
+.slot.heute .vorne { outline: 2px solid var(--gold); animation: leuchten 1.6s ease-in-out infinite alternate; }
+.blatt:focus-visible { outline: none; }
+.blatt:focus-visible .vorne { outline: 3px solid var(--gold); }
+.slot.wackeln { animation: wackeln .4s; }
 
-footer { text-align: center; padding: 2rem 1rem; }
-button { font: inherit; }
-#zuruecksetzen, #dialog-schliessen {
-  background: transparent; color: var(--text);
+.kapitel-link {
+  position: absolute; left: 50%; bottom: 6%;
+  transform: translateX(-50%);
+  white-space: nowrap;
+  font-size: 1.5cqw; padding: .25em .6em; border-radius: 99px;
+  background: var(--rot); color: #fff; text-decoration: none;
+  box-shadow: 0 2px 6px #0008;
+  opacity: 0; pointer-events: none; transition: opacity .4s .6s;
+}
+.slot.offen .kapitel-link { opacity: 1; pointer-events: auto; }
+.kapitel-link:hover, .kapitel-link:focus-visible { background: var(--gold); color: var(--tinte); outline: none; }
+.slot:not(.offen) .kapitel-link { visibility: hidden; }
+
+.bild.nur-bild .slot.offen .blatt,
+.bild.nur-bild .kapitel-link { opacity: 0; pointer-events: none; transition-delay: 0s; }
+.bild.nur-bild .dahinter { box-shadow: none; }
+
+@keyframes leuchten { to { box-shadow: 0 0 16px 4px var(--gold); } }
+@keyframes wackeln { 25% { transform: translateX(-4px); } 75% { transform: translateX(4px); } }
+
+footer { text-align: center; padding: 1.5rem 16px 2.5rem; display: flex; gap: .8rem; justify-content: center; flex-wrap: wrap; }
+footer button {
+  font: inherit; background: transparent; color: var(--text);
   border: 1px solid #fff5; border-radius: 6px; padding: .5rem 1rem; cursor: pointer;
 }
-#zuruecksetzen:hover, #dialog-schliessen:hover { border-color: var(--gold); color: var(--gold); }
+footer button:hover { border-color: var(--gold); color: var(--gold); }
 
-dialog {
-  border: none; border-radius: 14px; padding: 0;
-  max-width: min(520px, calc(100vw - 32px));
-  background: #fdf6ec; color: #2b2b2b;
-  box-shadow: 0 10px 40px #000a;
+@media (max-width: 600px) {
+  .zahl { font-size: 5.5cqw; }
+  .kapitel-link { font-size: 2.6cqw; }
 }
-dialog::backdrop { background: #000a; }
-dialog article { padding: 1.5rem; text-align: center; }
-dialog .tag { margin: 0; color: var(--tuer); font-weight: bold; letter-spacing: .1em; text-transform: uppercase; }
-dialog h2 { margin: .3rem 0 1rem; }
-#dialog-inhalt { font-size: 1.1rem; line-height: 1.5; }
-#dialog-inhalt .emoji { font-size: 4rem; display: block; margin-bottom: .5rem; }
-#dialog-inhalt img { max-width: 100%; border-radius: 8px; }
-#dialog-inhalt a { color: var(--tuer2); }
-#dialog-schliessen { margin-top: 1.2rem; color: #2b2b2b; border-color: #0004; }
 
-@media (max-width: 700px) { #kalender { grid-template-columns: repeat(4, 1fr); } }
-@media (max-width: 420px) { #kalender { grid-template-columns: repeat(3, 1fr); gap: 10px; } .tuer-blatt { font-size: 1.5rem; } }
+/* ---------- Kapitelseite ---------- */
+.kapitelseite main { max-width: 720px; margin: 0 auto; padding: 1rem 16px 3rem; }
+.oben a { color: var(--gold); text-decoration: none; }
+.pergament {
+  margin-top: 1rem; padding: clamp(1.2rem, 5vw, 2.5rem);
+  background: var(--papier); color: var(--tinte);
+  border-radius: 10px; box-shadow: 0 10px 40px #000a;
+}
+.vignette {
+  width: min(260px, 70%); margin: 0 auto 1.2rem;
+  border-radius: 8px; box-shadow: 0 0 0 4px #fff, 0 4px 14px #0006;
+  background-repeat: no-repeat;
+}
+.vignette[hidden] { display: none; }
+.pergament .tag { margin: 0; text-align: center; color: var(--rot); font-weight: bold; letter-spacing: .1em; text-transform: uppercase; font-size: .85rem; }
+.pergament h1 { color: var(--tinte); text-shadow: none; text-align: center; margin: .3rem 0 .2rem; }
+.geschichte-titel { text-align: center; font-style: italic; opacity: .7; margin: 0 0 1.5rem; }
+#kapitel-inhalt p { font-size: 1.12rem; line-height: 1.7; margin: 0 0 1em; }
+.hoerbuch { margin: 0 0 1.5rem; padding: 1rem; background: #efe5d0; border-radius: 8px; text-align: center; }
+.hoerbuch figcaption { margin-bottom: .5rem; font-weight: bold; }
+.hoerbuch audio { width: 100%; }
+.blaettern { display: flex; justify-content: space-between; margin-top: 2rem; border-top: 1px solid #0002; padding-top: 1rem; }
+.blaettern a { color: var(--rot); text-decoration: none; font-weight: bold; }
+.blaettern a:not([href]) { visibility: hidden; }
 
 @media (prefers-reduced-motion: reduce) {
-  .tuer-blatt { transition: none; }
-  .tuer.heute .tuer-blatt, .tuer.wackeln { animation: none; }
+  .blatt { transition: none; }
+  .slot.heute .vorne, .slot.wackeln { animation: none; }
 }
