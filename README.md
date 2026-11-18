@@ -11,9 +11,14 @@ Statische Website, kein Build-Schritt, keine Cookies, keine externen Dienste.
 
 | Datei | Inhalt |
 |---|---|
-| `index.html` | Begrüßung (QR-Code auf der Kalender-Rückseite), Kalenderbild, Übersicht der 24 Kapitel |
-| `kapitel.html?nr=1` … `?nr=24` | Ein Kapitel – Ziel der QR-Codes in den Türchen |
+| `/einleitung` | Begrüßung – Ziel des QR-Codes auf der Kalender-Rückseite (auch `/`) |
+| `/tuer-01` … `/tuer-24` | Ein Kapitel – Ziel der QR-Codes in den Türchen |
 | `impressum.html`, `datenschutz.html` | Pflichtangaben – **Platzhalter `[…]` noch ausfüllen** |
+
+Die Adressen entsprechen den gedruckten QR-Codes (`https://adventsbaude.de/tuer-01` usw.).
+Die Ordner `einleitung/` und `tuer-XX/` sind Kopien von `index.html` bzw. `kapitel.html`
+und werden mit `python3 werkzeuge/seiten-erzeugen.py` neu erzeugt. Die Seite muss im
+Wurzelverzeichnis der Domain liegen (alle Pfade sind absolut).
 
 ## Freischaltung
 

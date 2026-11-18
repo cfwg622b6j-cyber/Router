@@ -1,11 +1,12 @@
 (function () {
   "use strict";
   const G = window.GESCHICHTE, A = window.ADVENT;
-  const nr = parseInt(new URLSearchParams(location.search).get("nr"), 10);
+  const ausPfad = location.pathname.match(/tuer-(\d+)/);
+  const nr = parseInt(ausPfad ? ausPfad[1] : new URLSearchParams(location.search).get("nr"), 10);
   const inhalt = document.getElementById("kapitel-inhalt");
   const titel = document.getElementById("kapitel-titel");
   const absatz = (t) => { const p = document.createElement("p"); p.textContent = t; inhalt.append(p); };
-  document.getElementById("zur-start").href = A.link("index.html");
+  document.getElementById("zur-start").href = A.link("/einleitung");
 
   if (!(nr >= 1 && nr <= 24)) {
     titel.textContent = "Dieses Kapitel gibt es nicht.";
@@ -40,6 +41,6 @@
   }
 
   const zurueck = document.getElementById("zurueck"), weiter = document.getElementById("weiter");
-  if (nr > 1) { zurueck.href = A.link(`kapitel.html?nr=${nr - 1}`); zurueck.textContent = `‹ ${G.kapitel[nr - 2].titel}`; }
-  if (nr < 24 && A.istFrei(nr + 1)) { weiter.href = A.link(`kapitel.html?nr=${nr + 1}`); weiter.textContent = `${G.kapitel[nr].titel} ›`; }
+  if (nr > 1) { zurueck.href = A.link(A.tuer(nr - 1)); zurueck.textContent = `‹ ${G.kapitel[nr - 2].titel}`; }
+  if (nr < 24 && A.istFrei(nr + 1)) { weiter.href = A.link(A.tuer(nr + 1)); weiter.textContent = `${G.kapitel[nr].titel} ›`; }
 })();

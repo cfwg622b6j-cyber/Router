@@ -25,5 +25,8 @@ window.ADVENT = (function () {
     if (!p.length) return pfad;
     return pfad + (pfad.includes("?") ? "&" : "?") + p.join("&");
   }
-  return { heute, istFrei, freiAb, link };
+  // Adressen wie auf den gedruckten QR-Codes: /tuer-01 … /tuer-24
+  function tuer(nr) { return "/tuer-" + String(nr).padStart(2, "0"); }
+
+  return { heute, istFrei, freiAb, link, tuer };
 })();

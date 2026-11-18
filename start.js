@@ -8,7 +8,7 @@
     if (A.istFrei(nr)) {
       frei++;
       const a = document.createElement("a");
-      a.href = A.link("kapitel.html?nr=" + nr);
+      a.href = A.link(A.tuer(nr));
       a.innerHTML = `<span class="nr">${nr}</span><span class="name"></span>`;
       a.querySelector(".name").textContent = k.titel;
       li.append(a);
