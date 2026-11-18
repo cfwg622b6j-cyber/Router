@@ -10,7 +10,7 @@
       <stop offset="0" stop-color="#fbf5e8"/><stop offset="1" stop-color="#eadcc0"/>
     </radialGradient>
     <radialGradient id="kopf" cx="45%" cy="38%" r="65%">
-      <stop offset="0" stop-color="#d8cbb0"/><stop offset="1" stop-color="#b3a283"/>
+      <stop offset="0" stop-color="#c9ad86"/><stop offset="1" stop-color="#a88a64"/>
     </radialGradient>
     <radialGradient id="licht" cx="50%" cy="50%" r="50%">
       <stop offset="0" stop-color="#ffd76e" stop-opacity=".9"/><stop offset="1" stop-color="#ffd76e" stop-opacity="0"/>
@@ -36,14 +36,14 @@
 
   <!-- Füße, barfuß und behaart -->
   <g stroke="#5c4330" stroke-width="3" stroke-linecap="round">
-    <ellipse cx="252" cy="724" rx="50" ry="22" fill="#c2b192"/>
-    <ellipse cx="348" cy="724" rx="50" ry="22" fill="#c2b192"/>
+    <ellipse cx="252" cy="724" rx="50" ry="22" fill="#b0916a"/>
+    <ellipse cx="348" cy="724" rx="50" ry="22" fill="#b0916a"/>
   </g>
-  <g fill="#cfc0a2" stroke="#5c4330" stroke-width="2.5">
+  <g fill="#c4a67f" stroke="#5c4330" stroke-width="2.5">
     <circle cx="210" cy="732" r="9"/><circle cx="226" cy="738" r="8"/><circle cx="242" cy="741" r="7"/>
     <circle cx="390" cy="732" r="9"/><circle cx="374" cy="738" r="8"/><circle cx="358" cy="741" r="7"/>
   </g>
-  <g stroke="#6b5a48" stroke-width="3" stroke-linecap="round" fill="none">
+  <g stroke="#6b4f35" stroke-width="3" stroke-linecap="round" fill="none">
     <path d="M232 706 l-6 -10 M246 704 l0 -12 M260 705 l6 -10 M274 708 l8 -8"/>
     <path d="M326 708 l-8 -8 M340 705 l-6 -10 M354 704 l0 -12 M368 706 l6 -10"/>
   </g>
@@ -72,8 +72,8 @@
   <path d="M176 652 q6 10 0 18 q-6 -8 0 -18" fill="#f39c12"/>
   <rect x="156" y="684" width="40" height="9" rx="3" fill="#3b3b3b"/>
   <!-- linke Hand, pelzig -->
-  <circle cx="186" cy="594" r="25" fill="#c2b192" stroke="#5c4330" stroke-width="3"/>
-  <path d="M168 582 l-8 -6 M166 596 l-10 0 M172 608 l-7 7" stroke="#6b5a48" stroke-width="3" stroke-linecap="round"/>
+  <circle cx="186" cy="594" r="25" fill="#b0916a" stroke="#5c4330" stroke-width="3"/>
+  <path d="M168 582 l-8 -6 M166 596 l-10 0 M172 608 l-7 7" stroke="#6b4f35" stroke-width="3" stroke-linecap="round"/>
 
   <!-- rechter Arm (winkt) -->
   <g transform="translate(378 470) rotate(-125)">
@@ -81,14 +81,14 @@
     <rect x="-29" y="107" width="58" height="16" rx="8" fill="#f4ede0" stroke="#7a2a20" stroke-width="2.5"/>
   </g>
   <!-- rechte Hand, winkend -->
-  <g stroke="#5c4330" stroke-width="3" fill="#c2b192" transform="translate(486 392)">
+  <g stroke="#5c4330" stroke-width="3" fill="#b0916a" transform="translate(486 392)">
     <ellipse cx="-8" cy="-34" rx="10" ry="20" transform="rotate(-15 -8 -34)"/>
     <ellipse cx="12" cy="-33" rx="10" ry="20" transform="rotate(12 12 -33)"/>
     <ellipse cx="29" cy="-18" rx="9" ry="18" transform="rotate(48 29 -18)"/>
     <ellipse cx="-28" cy="-8" rx="9" ry="16" transform="rotate(-70 -28 -8)"/>
     <circle cx="0" cy="0" r="27"/>
   </g>
-  <path d="M470 416 l-5 9 M486 420 l0 10 M501 414 l5 8" stroke="#6b5a48" stroke-width="3" stroke-linecap="round"/>
+  <path d="M470 416 l-5 9 M486 420 l0 10 M501 414 l5 8" stroke="#6b4f35" stroke-width="3" stroke-linecap="round"/>
 
   <!-- Latz mit Taschen und Trägern -->
   <path d="M248 505 H352 V600 H248 Z" fill="url(#jeans)" stroke="#2c4060" stroke-width="3" stroke-linejoin="round"/>
@@ -99,63 +99,47 @@
   <circle cx="254" cy="512" r="7" fill="#e8c26a" stroke="#8a6d2f" stroke-width="2"/>
   <circle cx="346" cy="512" r="7" fill="#e8c26a" stroke="#8a6d2f" stroke-width="2"/>
 
-  <!-- große runde Ohren -->
-  <g stroke="#5c4c3a" stroke-width="3">
-    <ellipse cx="168" cy="335" rx="42" ry="50" fill="#c7b796"/>
-    <path d="M178 305 Q150 318 160 345 Q168 365 185 360" fill="none" stroke="#8f7f63" stroke-width="5" stroke-linecap="round"/>
-    <ellipse cx="432" cy="335" rx="42" ry="50" fill="#c7b796"/>
-    <path d="M422 305 Q450 318 440 345 Q432 365 415 360" fill="none" stroke="#8f7f63" stroke-width="5" stroke-linecap="round"/>
+  <!-- Ohren -->
+  <g stroke="#5c4330" stroke-width="3">
+    <ellipse cx="160" cy="318" rx="48" ry="28" transform="rotate(-18 160 318)" fill="#b0916a"/>
+    <ellipse cx="168" cy="318" rx="28" ry="14" transform="rotate(-18 168 318)" fill="#d9a79a" stroke="none"/>
+    <ellipse cx="440" cy="318" rx="48" ry="28" transform="rotate(18 440 318)" fill="#b0916a"/>
+    <ellipse cx="432" cy="318" rx="28" ry="14" transform="rotate(18 432 318)" fill="#d9a79a" stroke="none"/>
   </g>
+  <path d="M116 302 l-12 -8 M118 320 l-14 0 M444 278 M484 302 l12 -8 M482 320 l14 0" stroke="#6b4f35" stroke-width="3" stroke-linecap="round"/>
 
-  <!-- großer kahler Kopf -->
-  <ellipse cx="300" cy="318" rx="140" ry="152" fill="url(#kopf)" stroke="#5c4c3a" stroke-width="3.5"/>
-  <ellipse cx="258" cy="212" rx="46" ry="20" fill="#fff" opacity=".35" transform="rotate(-15 258 212)"/>
-  <!-- ein paar Härchen an den Seiten -->
-  <!-- Stirnfalten -->
-  <g stroke="#8f7f63" stroke-width="3.5" fill="none" stroke-linecap="round">
-    <path d="M238 228 Q300 212 362 228"/>
-    <path d="M228 248 Q300 232 372 248"/>
-    <path d="M246 266 Q300 254 354 266"/>
+  <!-- großer Kopf -->
+  <ellipse cx="300" cy="330" rx="150" ry="136" fill="url(#kopf)" stroke="#5c4330" stroke-width="3.5"/>
+  <!-- Haarschopf -->
+  <path d="M190 250 Q205 190 250 205 Q262 160 300 188 Q330 150 352 200 Q395 188 410 248
+           Q380 222 350 230 Q330 205 300 222 Q270 205 252 230 Q222 220 190 250 Z"
+        fill="#6b4f35" stroke="#4a3524" stroke-width="3" stroke-linejoin="round"/>
+  <path d="M300 190 Q292 150 312 128 Q306 160 318 180" fill="#6b4f35" stroke="#4a3524" stroke-width="3"/>
+  <!-- Augenbrauen -->
+  <path d="M215 278 Q248 258 280 276" stroke="#4a3524" stroke-width="10" stroke-linecap="round" fill="none"/>
+  <path d="M320 276 Q352 258 385 278" stroke="#4a3524" stroke-width="10" stroke-linecap="round" fill="none"/>
+  <!-- Augen -->
+  <g stroke="#3a2a1c" stroke-width="3">
+    <ellipse cx="250" cy="318" rx="30" ry="34" fill="#fffdf8"/>
+    <ellipse cx="350" cy="318" rx="30" ry="34" fill="#fffdf8"/>
   </g>
-  <!-- buschige, gütige Augenbrauen -->
-  <path d="M214 294 Q244 274 280 280" stroke="#5a4a3a" stroke-width="9" stroke-linecap="round" fill="none"/>
-  <path d="M320 280 Q356 274 386 294" stroke="#5a4a3a" stroke-width="9" stroke-linecap="round" fill="none"/>
-  <!-- Augen mit schweren Lidern -->
-  <g stroke="#3a2e22" stroke-width="3">
-    <ellipse cx="250" cy="318" rx="27" ry="22" fill="#fffdf6"/>
-    <ellipse cx="350" cy="318" rx="27" ry="22" fill="#fffdf6"/>
-  </g>
-  <circle cx="254" cy="324" r="13" fill="#6a7f8c"/><circle cx="346" cy="324" r="13" fill="#6a7f8c"/>
-  <circle cx="255" cy="325" r="7" fill="#1f1a14"/><circle cx="345" cy="325" r="7" fill="#1f1a14"/>
-  <circle cx="259" cy="321" r="3.5" fill="#fff"/><circle cx="349" cy="321" r="3.5" fill="#fff"/>
-  <path d="M221 316 Q250 290 279 316 L279 306 Q250 288 221 306 Z" fill="#bba985" stroke="#3a2e22" stroke-width="3" stroke-linejoin="round"/>
-  <path d="M321 316 Q350 290 379 316 L379 306 Q350 288 321 306 Z" fill="#bba985" stroke="#3a2e22" stroke-width="3" stroke-linejoin="round"/>
-  <!-- Tränensäcke und Lachfältchen -->
-  <g stroke="#8f7f63" stroke-width="3" fill="none" stroke-linecap="round">
-    <path d="M230 346 Q250 356 270 346"/><path d="M330 346 Q350 356 370 346"/>
-    <path d="M212 312 l-12 -4 M212 324 l-13 2"/><path d="M388 312 l12 -4 M388 324 l13 2"/>
-  </g>
-  <!-- Bäckchen -->
-  <circle cx="218" cy="372" r="24" fill="#d98b7c" opacity=".35"/>
-  <circle cx="382" cy="372" r="24" fill="#d98b7c" opacity=".35"/>
-  <!-- breite Nase -->
-  <path d="M286 312 Q282 345 268 362 Q262 384 286 386 Q300 394 314 386 Q338 384 332 362 Q318 345 314 312"
-        fill="#bca783" stroke="#5c4c3a" stroke-width="3" stroke-linejoin="round"/>
-  <ellipse cx="300" cy="366" rx="14" ry="10" fill="#d8c8a8" opacity=".7"/>
-  <path d="M280 380 q6 4 10 0 M310 380 q4 4 10 0" stroke="#5c4c3a" stroke-width="3" fill="none" stroke-linecap="round"/>
-  <!-- Wangenfalten -->
-  <path d="M262 372 Q242 398 250 420" stroke="#8f7f63" stroke-width="3" fill="none" stroke-linecap="round"/>
-  <path d="M338 372 Q358 398 350 420" stroke="#8f7f63" stroke-width="3" fill="none" stroke-linecap="round"/>
-  <!-- dunkler Bart um Mund und Kinn -->
-  <path d="M248 400 Q262 392 300 396 Q338 392 352 400 Q364 432 344 456 Q326 476 300 478 Q274 476 256 456 Q236 432 248 400 Z"
-        fill="#5a4c3e" stroke="#3e3328" stroke-width="3" stroke-linejoin="round"/>
-  <g stroke="#7a6a58" stroke-width="2.5" stroke-linecap="round">
-    <path d="M262 430 l4 12 M278 446 l2 12 M300 452 l0 13 M322 446 l-2 12 M338 430 l-4 12"/>
-  </g>
-  <!-- Schnurrbart und freundlicher Mund -->
-  <path d="M262 402 Q282 392 300 402 Q318 392 338 402 Q326 414 300 408 Q274 414 262 402 Z" fill="#4a3e32"/>
-  <path d="M266 414 Q300 450 334 414 Q300 424 266 414 Z" fill="#7a3b2e" stroke="#2e241a" stroke-width="3" stroke-linejoin="round"/>
-  <path d="M272 417 Q300 426 328 417 L326 422 Q300 430 274 422 Z" fill="#fffdf6"/>
+  <circle cx="256" cy="326" r="17" fill="#6b8e4e"/><circle cx="344" cy="326" r="17" fill="#6b8e4e"/>
+  <circle cx="257" cy="327" r="9" fill="#1f1a14"/><circle cx="343" cy="327" r="9" fill="#1f1a14"/>
+  <circle cx="262" cy="320" r="5" fill="#fff"/><circle cx="348" cy="320" r="5" fill="#fff"/>
+  <!-- Bäckchen und Sommersprossen -->
+  <circle cx="212" cy="384" r="24" fill="#e0837a" opacity=".45"/>
+  <circle cx="388" cy="384" r="24" fill="#e0837a" opacity=".45"/>
+  <g fill="#8a6a4a"><circle cx="205" cy="372" r="2.5"/><circle cx="218" cy="366" r="2.5"/><circle cx="214" cy="380" r="2.5"/>
+    <circle cx="395" cy="372" r="2.5"/><circle cx="382" cy="366" r="2.5"/><circle cx="386" cy="380" r="2.5"/></g>
+  <!-- Knollennase -->
+  <ellipse cx="300" cy="372" rx="36" ry="28" fill="#b88f6a" stroke="#5c4330" stroke-width="3"/>
+  <ellipse cx="290" cy="362" rx="10" ry="7" fill="#e3c9a6" opacity=".8"/>
+  <!-- Lächeln mit Zahnlücke -->
+  <path d="M248 412 Q300 458 352 412" stroke="#3a2a1c" stroke-width="4" fill="#7a3b2e" stroke-linejoin="round"/>
+  <path d="M262 420 Q300 440 338 420 L338 418 Q300 432 262 418 Z" fill="#fff"/>
+  <rect x="304" y="420" width="12" height="13" rx="2" fill="#fffdf8" stroke="#3a2a1c" stroke-width="2"/>
+  <!-- Kinnhaare -->
+  <path d="M286 462 l-2 10 M300 465 l0 11 M314 462 l2 10" stroke="#6b4f35" stroke-width="3" stroke-linecap="round"/>
 
   <text x="300" y="800" text-anchor="middle" font-family="Georgia, serif" font-size="30" fill="#5a3e2b">Der kleine Baudentroll</text>
 </svg>
